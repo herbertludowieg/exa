@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Frontend Container &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../index.html"/>
+        <link rel="up" title="API" href="../api.html"/>
+        <link rel="next" title="Applications" href="apps.html"/>
+        <link rel="prev" title="Filetypes" href="../filetypes/base.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#trait-supporting-data-objects">Trait Supporting Data Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#container">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#widget">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html">Matplotlib Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html#tex-utilities">TeX Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tester.html">Tester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tests.html">Basic Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/base.html">Relational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/base.html#database-engine-configuration">Database Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/cms.html">Project Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/cms.html#job-table">Job Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/cms.html#file-tables">File Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/other.html">Table of Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/other.html#physical-constants">Physical Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/other.html#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/tests.html">Tests for <code class="docutils literal"><span class="pre">isotope</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/tests.html#tests-for-constant">Tests for <code class="docutils literal"><span class="pre">constant</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../relational/tests.html#tests-for-unit">Tests for <code class="docutils literal"><span class="pre">unit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/base.html">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/base.html">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/tests.html">Tests for Math Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector.html">Cartesian Vector Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector_tests.html">Tests for <code class="docutils literal"><span class="pre">cartesian</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html#summations">Summations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc_tests.html">Tests for <code class="docutils literal"><span class="pre">summation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html">Filetypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html#generic-csv-support">Generic CSV Support</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Frontend Container</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#container-js">container.js</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#containerview">ContainerView</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="apps.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external.html">Third Party Library Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utility.html">Misc.</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>Frontend Container</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/js/container.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="frontend-container">
+<h1>Frontend Container<a class="headerlink" href="#frontend-container" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="container-js">
+<h2>container.js<a class="headerlink" href="#container-js" title="Permalink to this headline">¶</a></h2>
+<p>JavaScript &#8220;frontend&#8221; counterpart of exa&#8217;s Container object for use within
+the Jupyter notebook interface. This &#8220;module&#8221; standardizes bidirectional
+communication logic for all container widget views.</p>
+<p>The structure of the frontend is to generate an HTML widget (&#8220;container&#8221; - see
+create_container) and then populate its canvas with an application (&#8220;app&#8221;)
+appropriate to the type of container. If the (backend) container is empty, then
+populate the HTML widget with the test application. If the container is not
+empty but doesn&#8217;t have a dedicated application, the info application (info.js)
+is used.</p>
+<div class="section" id="containerview">
+<h3>ContainerView<a class="headerlink" href="#containerview" title="Permalink to this headline">¶</a></h3>
+<p>Base view for creating data specific container widgets used within the
+Jupyter notebook. All logic related to communication (between Python
+and JavaScript) should be located here. This class provides a number
+of commonly used functions for such logic.</p>
+<dl class="docutils">
+<dt>Warning:</dt>
+<dd>Do not override the DOMWidgetView constructor (&#8220;initialize&#8221;).</dd>
+</dl>
+<div class="section" id="render">
+<h4>render<a class="headerlink" href="#render" title="Permalink to this headline">¶</a></h4>
+<p>Main entry point (called immediately after initialize) for
+(ipywidgets) DOMWidgetView objects.</p>
+<dl class="docutils">
+<dt>Note:</dt>
+<dd>This function  can be overwritten by container specific code,
+but it is more common to overwrite the <strong>init</strong> function.</dd>
+<dt>See Also:</dt>
+<dd><strong>init()</strong></dd>
+</dl>
+</div>
+<div class="section" id="init">
+<h4>init<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h4>
+<p>Container view classes that extend this class can overwrite this
+method to customize the behavior of their data specific view.</p>
+</div>
+<div class="section" id="get-trait">
+<h4>get_trait<a class="headerlink" href="#get-trait" title="Permalink to this headline">¶</a></h4>
+<p>Wrapper around the DOMWidgetView (Backbone.js) &#8220;model.get&#8221; function,
+that attempts to convert JSON strings to objects.</p>
+</div>
+<div class="section" id="set-trait">
+<h4>set_trait<a class="headerlink" href="#set-trait" title="Permalink to this headline">¶</a></h4>
+<p>Wrapper around the DOMWidgetView &#8220;model.set&#8221; function to correctly
+set json strings.</p>
+</div>
+<div class="section" id="if-empty">
+<h4>if_empty<a class="headerlink" href="#if-empty" title="Permalink to this headline">¶</a></h4>
+<p>If the (exa) container object is empty, render the test application
+widget.</p>
+</div>
+<div class="section" id="default-listeners">
+<h4>default_listeners<a class="headerlink" href="#default-listeners" title="Permalink to this headline">¶</a></h4>
+<p>Set up listeners for basic variables related to the window dimensions
+and system settings.</p>
+</div>
+<div class="section" id="create-container">
+<h4>create_container<a class="headerlink" href="#create-container" title="Permalink to this headline">¶</a></h4>
+<p>Create a resizable container.</p>
+</div>
+<div class="section" id="create-canvas">
+<h4>create_canvas<a class="headerlink" href="#create-canvas" title="Permalink to this headline">¶</a></h4>
+<p>Create a canvas for WebGL.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="apps.html" class="btn btn-neutral float-right" title="Applications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../filetypes/base.html" class="btn btn-neutral" title="Filetypes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Table of Isotopes &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../index.html"/>
+        <link rel="up" title="API" href="../api.html"/>
+        <link rel="next" title="Tests for isotope" href="tests.html"/>
+        <link rel="prev" title="Project Table" href="cms.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#trait-supporting-data-objects">Trait Supporting Data Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#container">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#widget">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html">Matplotlib Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html#tex-utilities">TeX Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tester.html">Tester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tests.html">Basic Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html">Relational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base.html#database-engine-configuration">Database Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html">Project Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html#job-table">Job Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html#file-tables">File Tables</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Table of Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#physical-constants">Physical Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests for <code class="docutils literal"><span class="pre">isotope</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#tests-for-constant">Tests for <code class="docutils literal"><span class="pre">constant</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#tests-for-unit">Tests for <code class="docutils literal"><span class="pre">unit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/base.html">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/base.html">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/tests.html">Tests for Math Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector.html">Cartesian Vector Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector_tests.html">Tests for <code class="docutils literal"><span class="pre">cartesian</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html#summations">Summations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc_tests.html">Tests for <code class="docutils literal"><span class="pre">summation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html">Filetypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html#generic-csv-support">Generic CSV Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/container.html">Frontend Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/apps.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/external.html">Third Party Library Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/utility.html">Misc.</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>Table of Isotopes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/relational/other.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-exa.relational.isotope"></span><div class="section" id="table-of-isotopes">
+<h1>Table of Isotopes<a class="headerlink" href="#table-of-isotopes" title="Permalink to this headline">¶</a></h1>
+<p>This module provides an interface for interacting with isotopes of atoms; the
+extended periodic table. For convenience, functions are provided for obtaining
+traditionally used elements. This module also provides mappers for commonly
+used dataframe manipulations.</p>
+<dl class="class">
+<dt id="exa.relational.isotope.Meta">
+<em class="property">class </em><code class="descclassname">exa.relational.isotope.</code><code class="descname">Meta</code><span class="sig-paren">(</span><em>classname</em>, <em>bases</em>, <em>dict_</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides lookup methods for <a class="reference internal" href="#exa.relational.isotope.Isotope" title="exa.relational.isotope.Isotope"><code class="xref py py-class docutils literal"><span class="pre">Isotope</span></code></a>.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="n">Isotope</span><span class="p">[</span><span class="s1">&#39;1H&#39;</span><span class="p">]</span>     <span class="c1"># Returns</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="exa.relational.isotope.Meta.get_by_strid">
+<code class="descname">get_by_strid</code><span class="sig-paren">(</span><em>strid</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#Meta.get_by_strid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.Meta.get_by_strid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an isotope using a string id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.isotope.Meta.get_by_symbol">
+<code class="descname">get_by_symbol</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#Meta.get_by_symbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.Meta.get_by_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get an isotope using a string id.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.isotope.Meta.get_element">
+<code class="descname">get_element</code><span class="sig-paren">(</span><em>name_or_symbol</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#Meta.get_element"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.Meta.get_element" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get (i.e. compute) the element with the given name or symbol (an
+element&#8217;s data is given as an average over isotopic composition).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.isotope.Isotope">
+<em class="property">class </em><code class="descclassname">exa.relational.isotope.</code><code class="descname">Isotope</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#Isotope"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.Isotope" title="Permalink to this definition">¶</a></dt>
+<dd><p>A variant of a chemical element with a specific proton and neutron count.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Isotope</span><span class="p">[</span><span class="s1">&#39;1H&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">A</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">Z</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span><span class="o">.</span><span class="n">mass</span>
+<span class="go">1.0078250321</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Isotope</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="go">[8C, 9C, 10C, 11C, 12C, 13C, 14C, 15C, 16C, 17C, 18C, 19C, 20C, 21C, 22C]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Isotope</span><span class="p">[</span><span class="s1">&#39;13C&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">szuid</span>
+<span class="go">175</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span> <span class="o">=</span> <span class="n">Isotope</span><span class="p">[</span><span class="mi">57</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">A</span>
+<span class="go">13</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">Z</span>
+<span class="go">6</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">c</span><span class="o">.</span><span class="n">strid</span>
+<span class="go">&#39;13C&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.symbol_to_z">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">symbol_to_z</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#symbol_to_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.symbol_to_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a &#8220;mapper&#8221; (<a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/generated/pandas.Series.html#pandas.Series" title="(in pandas v0.19.0+709.ga108651.dirty)"><code class="xref py py-class docutils literal"><span class="pre">Series</span></code></a>) from element symbol to proton
+number (&#8220;Z&#8221;). This object can be used to quickly transform element symbols
+to proton number via:</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="n">mapper</span> <span class="o">=</span> <span class="n">symbol_to_z</span><span class="p">()</span>
+<span class="n">z_series</span> <span class="o">=</span> <span class="n">symbol_series</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapper</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.z_to_symbol">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">z_to_symbol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#z_to_symbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.z_to_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a mapper from proton number to element symbol.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Opposite mapper of <a class="reference internal" href="#exa.relational.isotope.symbol_to_z" title="exa.relational.isotope.symbol_to_z"><code class="xref py py-func docutils literal"><span class="pre">symbol_to_z()</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.symbols_to_radii">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">symbols_to_radii</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#symbols_to_radii"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.symbols_to_radii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapper from symbol pairs to sum of covalent radii.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.symbol_to_element_mass">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">symbol_to_element_mass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#symbol_to_element_mass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.symbol_to_element_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapper from symbol to element mass.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.symbol_to_radius">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">symbol_to_radius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#symbol_to_radius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.symbol_to_radius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapper from isotope symbol to covalent radius.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.isotope.symbol_to_color">
+<code class="descclassname">exa.relational.isotope.</code><code class="descname">symbol_to_color</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/isotope.html#symbol_to_color"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.isotope.symbol_to_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mapper from isotope symbol to color.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.relational.constant"></span><div class="section" id="physical-constants">
+<h1>Physical Constants<a class="headerlink" href="#physical-constants" title="Permalink to this headline">¶</a></h1>
+<p>Table of reference physical constants in SI units.</p>
+<dl class="class">
+<dt id="exa.relational.constant.Meta">
+<em class="property">class </em><code class="descclassname">exa.relational.constant.</code><code class="descname">Meta</code><span class="sig-paren">(</span><em>classname</em>, <em>bases</em>, <em>dict_</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/constant.html#Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.constant.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Metaclass for <a class="reference internal" href="#exa.relational.constant.Constant" title="exa.relational.constant.Constant"><code class="xref py py-class docutils literal"><span class="pre">Constant</span></code></a>.</p>
+<dl class="method">
+<dt id="exa.relational.constant.Meta.get_by_symbol">
+<code class="descname">get_by_symbol</code><span class="sig-paren">(</span><em>symbol</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/constant.html#Meta.get_by_symbol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.constant.Meta.get_by_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the value of a constant with the given symbol.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.constant.Constant">
+<em class="property">class </em><code class="descclassname">exa.relational.constant.</code><code class="descname">Constant</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/constant.html#Constant"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.constant.Constant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Physical constants and their values in SI units.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hartree</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">[</span><span class="s1">&#39;Eh&#39;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hartree</span>
+<span class="go">4.35974434e-18</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Available constants can be inspected by calling:</p>
+<div class="last highlight-Python"><div class="highlight"><pre><span></span><span class="n">Constant</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.relational.unit"></span><div class="section" id="unit-conversions">
+<h1>Unit Conversions<a class="headerlink" href="#unit-conversions" title="Permalink to this headline">¶</a></h1>
+<p>This module provides relational classes for unit conversion tables.</p>
+<dl class="class">
+<dt id="exa.relational.unit.Meta">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Meta</code><span class="sig-paren">(</span><em>classname</em>, <em>bases</em>, <em>dict_</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Meta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Meta" title="Permalink to this definition">¶</a></dt>
+<dd><p>Special metaclass for unit objects supporting aliases. Aliases are
+alternative names for standard symbols for units.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Dimension">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Dimension</code><a class="reference internal" href="../../_modules/exa/relational/unit.html#Dimension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Dimension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Descriptive class for units.</p>
+<dl class="attribute">
+<dt id="exa.relational.unit.Dimension.from_unit">
+<code class="descname">from_unit</code><a class="headerlink" href="#exa.relational.unit.Dimension.from_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Unit to convert from</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.relational.unit.Dimension.to_unit">
+<code class="descname">to_unit</code><a class="headerlink" href="#exa.relational.unit.Dimension.to_unit" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Unit to convert to</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.relational.unit.Dimension.factor">
+<code class="descname">factor</code><a class="headerlink" href="#exa.relational.unit.Dimension.factor" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> &#8211; Conversion factor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Length">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Length</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Length"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Length" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">[</span><span class="s1">&#39;angstrom&#39;</span><span class="p">,</span> <span class="s1">&#39;au&#39;</span><span class="p">]</span>
+<span class="go">1.88971616463</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;au&#39;</span><span class="p">]</span>
+<span class="go">1.88971616463</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Length</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;a0&#39;</span><span class="p">]</span>
+<span class="go">1.88971616463</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Mass">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Mass</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Mass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Mass" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Mass</span><span class="p">[</span><span class="s1">&#39;kg&#39;</span><span class="p">,</span> <span class="s1">&#39;lb&#39;</span><span class="p">]</span>
+<span class="go">2.2046226218</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Mass</span><span class="p">[</span><span class="s1">&#39;Da&#39;</span><span class="p">,</span> <span class="s1">&#39;kg&#39;</span><span class="p">]</span>
+<span class="go">1.660538921000011e-27</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Mass</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">,</span> <span class="s1">&#39;kg&#39;</span><span class="p">]</span>
+<span class="go">1.660538921000011e-27</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Time">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Time</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Time" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Time</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]</span>
+<span class="go">60.0000000000024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Time</span><span class="p">[</span><span class="s1">&#39;hr&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]</span>
+<span class="go">3599.999712000023</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Time</span><span class="p">[</span><span class="s1">&#39;weeks&#39;</span><span class="p">,</span> <span class="s1">&#39;days&#39;</span><span class="p">]</span>
+<span class="go">6.999999999955003</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Current">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Current</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Current"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Current" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Current</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;C_s&#39;</span><span class="p">]</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Current</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;Bi&#39;</span><span class="p">]</span>
+<span class="go">0.1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Amount">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Amount</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Amount"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Amount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Amount</span><span class="p">[</span><span class="s1">&#39;gmol&#39;</span><span class="p">,</span> <span class="s1">&#39;mol&#39;</span><span class="p">]</span>
+<span class="go">1.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Amount</span><span class="p">[</span><span class="s1">&#39;lbmol&#39;</span><span class="p">,</span> <span class="s1">&#39;mol&#39;</span><span class="p">]</span>
+<span class="go">453.5923744952991</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Luminosity">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Luminosity</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Luminosity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Luminosity" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Luminosity</span><span class="p">[</span><span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;cd&#39;</span><span class="p">]</span>
+<span class="go">0.9810000000433602</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Dose">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Dose</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Dose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Dose" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Dose</span><span class="p">[</span><span class="s1">&#39;Gy&#39;</span><span class="p">,</span> <span class="s1">&#39;rd&#39;</span><span class="p">]</span>
+<span class="go">100.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Dose</span><span class="p">[</span><span class="s1">&#39;J_kg&#39;</span><span class="p">,</span> <span class="s1">&#39;rd&#39;</span><span class="p">]</span>
+<span class="go">100.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Acceleration">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Acceleration</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Acceleration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Acceleration" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Acceleration</span><span class="p">[</span><span class="s1">&#39;m_s2&#39;</span><span class="p">,</span> <span class="s1">&#39;cm_s2&#39;</span><span class="p">]</span>
+<span class="go">100.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Acceleration</span><span class="p">[</span><span class="s1">&#39;m_s2&#39;</span><span class="p">,</span> <span class="s1">&#39;stdgrav&#39;</span><span class="p">]</span>
+<span class="go">0.10197162130000001</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Charge">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Charge</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Charge"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Charge" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Charge</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">]</span>
+<span class="go">1.6021765649999947e-19</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Dipole">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Dipole</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Dipole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Dipole" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Dipole</span><span class="p">[</span><span class="s1">&#39;yCm&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="go">299792.45817809016</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Energy">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Energy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Energy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Energy</span><span class="p">[</span><span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;cal&#39;</span><span class="p">]</span>
+<span class="go">0.2388458966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">Energy</span><span class="p">[</span><span class="s1">&#39;kcal&#39;</span><span class="p">,</span> <span class="s1">&#39;Btu&#39;</span><span class="p">]</span>
+<span class="go">3.9683205782473134</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Force">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Force</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Force"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Force" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Force</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;lbf&#39;</span><span class="p">]</span>
+<span class="go">0.22480894310000002</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.Frequency">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">Frequency</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#Frequency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.Frequency" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Frequency</span><span class="p">[</span><span class="s1">&#39;1_s&#39;</span><span class="p">,</span> <span class="s1">&#39;Hz&#39;</span><span class="p">]</span>
+<span class="go">1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.unit.MolarMass">
+<em class="property">class </em><code class="descclassname">exa.relational.unit.</code><code class="descname">MolarMass</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/unit.html#MolarMass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.unit.MolarMass" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">MolarMass</span><span class="p">[</span><span class="s1">&#39;g_mol&#39;</span><span class="p">,</span> <span class="s1">&#39;kg_mol&#39;</span><span class="p">]</span>
+<span class="go">0.001</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tests.html" class="btn btn-neutral float-right" title="Tests for isotope" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cms.html" class="btn btn-neutral" title="Project Table" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

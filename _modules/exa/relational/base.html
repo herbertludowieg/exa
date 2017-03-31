@@ -1,0 +1,434 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa.relational.base &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa.relational.base</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa.relational.base</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Database Engine Configuration</span>
+<span class="sd">##################################################</span>
+<span class="sd">This module provides the base classes and metaclasses for relational tables</span>
+<span class="sd">created by exa. It also provides the database engine configuration and session</span>
+<span class="sd">class factory.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sys</span> <span class="k">import</span> <span class="n">getsizeof</span>
+<span class="kn">from</span> <span class="nn">uuid</span> <span class="k">import</span> <span class="n">UUID</span><span class="p">,</span> <span class="n">uuid4</span>
+<span class="kn">from</span> <span class="nn">numbers</span> <span class="k">import</span> <span class="n">Integral</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">contextlib</span> <span class="k">import</span> <span class="n">contextmanager</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">,</span> <span class="n">create_engine</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.orm</span> <span class="k">import</span> <span class="n">sessionmaker</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy.ext.declarative</span> <span class="k">import</span> <span class="n">as_declarative</span><span class="p">,</span> <span class="n">declared_attr</span><span class="p">,</span> <span class="n">DeclarativeMeta</span>
+<span class="kn">from</span> <span class="nn">exa._config</span> <span class="k">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">exa.log</span> <span class="k">import</span> <span class="n">loggers</span>
+
+
+<div class="viewcode-block" id="generate_hexuid"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.generate_hexuid">[docs]</a><span class="k">def</span> <span class="nf">generate_hexuid</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Create a unique, random, hex string id.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">uuid4</span><span class="p">()</span><span class="o">.</span><span class="n">hex</span></div>
+
+
+<div class="viewcode-block" id="cleanup_engine"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.cleanup_engine">[docs]</a><span class="k">def</span> <span class="nf">cleanup_engine</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;At exit, cleanup connection pool.&quot;&quot;&quot;</span>
+    <span class="n">engine</span><span class="o">.</span><span class="n">dispose</span><span class="p">()</span></div>
+
+
+<span class="nd">@contextmanager</span>
+<div class="viewcode-block" id="scoped_session"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.scoped_session">[docs]</a><span class="k">def</span> <span class="nf">scoped_session</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Safely commit relational objects.&quot;&quot;&quot;</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">session_factory</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">session</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>
+        <span class="k">raise</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="BaseMeta"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta">[docs]</a><span class="k">class</span> <span class="nc">BaseMeta</span><span class="p">(</span><span class="n">DeclarativeMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is the base metaclass for all relational tables. It provides convient</span>
+<span class="sd">    lookup methods, bulk insert methods, and conversions to other formats.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="BaseMeta.get_by_pkid"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta.get_by_pkid">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_pkid</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">pkid</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Select an object by pkid.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">session_factory</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">pkid</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseMeta.get_by_name"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta.get_by_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Select objects by name.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">session_factory</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseMeta.get_by_uid"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta.get_by_uid">[docs]</a>    <span class="k">def</span> <span class="nf">get_by_uid</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">uid</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Select an object by hexuid (as string)&quot;&quot;&quot;</span>
+        <span class="n">hexuid</span> <span class="o">=</span> <span class="n">uid</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uid</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
+            <span class="n">hexuid</span> <span class="o">=</span> <span class="n">uid</span><span class="o">.</span><span class="n">hex</span>
+        <span class="k">return</span> <span class="n">session_factory</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">hexuid</span> <span class="o">==</span> <span class="n">hexuid</span><span class="p">)</span><span class="o">.</span><span class="n">one</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="BaseMeta.bulk_insert"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta.bulk_insert">[docs]</a>    <span class="k">def</span> <span class="nf">bulk_insert</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">mappings</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Perform a `bulk insert`_ into a specific table.</span>
+
+<span class="sd">        .. code-block:: Python</span>
+
+<span class="sd">            mappings = [{&#39;column1&#39;: &#39;foo&#39;, &#39;column2&#39;: 42, &#39;column3&#39;: &#39;bar&#39;},</span>
+<span class="sd">                        {&#39;column1&#39;: &#39;fop&#39;, &#39;column2&#39;: 43, &#39;column3&#39;: &#39;baz&#39;}]</span>
+<span class="sd">            Table.bulk_insert(mappings)</span>
+
+<span class="sd">        .. _bulk insert: http://docs.sqlalchemy.org/en/latest/orm/session_api.html</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="n">scoped_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+            <span class="n">session</span><span class="o">.</span><span class="n">bulk_insert_mappings</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">mappings</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BaseMeta.to_frame"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.BaseMeta.to_frame">[docs]</a>    <span class="k">def</span> <span class="nf">to_frame</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Dump the table to a :class:`~pandas.DataFrame` object.</span>
+
+<span class="sd">        Warning:</span>
+<span class="sd">            If performing this action on a very large table, may raise a</span>
+<span class="sd">            memory error. It is almost always more effective to query the</span>
+<span class="sd">            table for the specific records of interest.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">statement</span> <span class="o">=</span> <span class="n">session_factory</span><span class="p">()</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">statement</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">statement</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s1">&#39;pkid&#39;</span> <span class="ow">in</span> <span class="n">df</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;pkid&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">df</span></div>
+
+    <span class="k">def</span> <span class="nf">__getitem__</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Custom getter allows for the following convenient syntax:</span>
+
+<span class="sd">        .. code-block:: Python</span>
+
+<span class="sd">            exa.relational.File[1]            # Gets file with pkid == 1</span>
+<span class="sd">            exa.relational.File[&#39;name&#39;]       # Gets file with name == &#39;name&#39;</span>
+<span class="sd">            exa.relational.Isotope[&#39;H&#39;]       # Gets isotopes with symbol == &#39;H&#39;</span>
+<span class="sd">            exa.relational.Isotope[&#39;12C&#39;]     # Gets isotope with strid == &#39;12C&#39;</span>
+<span class="sd">            exa.relational.Length[&#39;m&#39;, &#39;km&#39;]  # Gets conversion factor meters to kilometers</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="s1">&#39;_getitem&#39;</span><span class="p">):</span>         <span class="c1"># First try using custom getter</span>
+            <span class="n">obj</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_getitem</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>                      <span class="c1"># Fall back to default getters</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_by_pkid</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">UUID</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_by_uid</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">get_by_name</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="s1">&#39;Unknown key (</span><span class="si">{0}</span><span class="s1">).&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">obj</span></div>
+
+
+<span class="nd">@as_declarative</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">BaseMeta</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Base</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for all relational tables. These classes behave as both the</span>
+<span class="sd">    definition of the table (the schema) as well as an object instance (in a</span>
+<span class="sd">    Python environment) of an entry (row) in the table.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">pkid</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="nd">@declared_attr</span>
+    <span class="k">def</span> <span class="nf">__tablename__</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">to_series</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a series object from the given record entry.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;_sa_instance_state&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">s</span>
+
+    <span class="k">def</span> <span class="nf">_save_record</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Save the current object&#39;s relational information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">session_factory</span><span class="p">(</span><span class="n">expire_on_commit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">session</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s1">&#39;</span><span class="si">{0}</span><span class="s1">(pkid: </span><span class="si">{1}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pkid</span><span class="p">)</span>
+
+
+<span class="c1"># These are so-called &quot;mix-in&quot; classes that add specific fields to a table</span>
+<div class="viewcode-block" id="Name"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.Name">[docs]</a><span class="k">class</span> <span class="nc">Name</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Name and description fields.&quot;&quot;&quot;</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HexUID"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.HexUID">[docs]</a><span class="k">class</span> <span class="nc">HexUID</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Hex-based unique id (uid) field.&quot;&quot;&quot;</span>
+    <span class="n">hexuid</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="n">generate_hexuid</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">uid</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">UUID</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hexuid</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Time"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.Time">[docs]</a><span class="k">class</span> <span class="nc">Time</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Timestamp fields.&quot;&quot;&quot;</span>
+    <span class="n">created</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">modified</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+    <span class="n">accessed</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">DateTime</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">,</span> <span class="n">onupdate</span><span class="o">=</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update_accessed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accessed</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_update_modified</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">modified</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Size"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.base.Size">[docs]</a><span class="k">class</span> <span class="nc">Size</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Approximate size (on disk) and file count fields.&quot;&quot;&quot;</span>
+    <span class="n">size</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+    <span class="n">nfiles</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">getsizeof</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="s1">&#39;dblog&#39;</span><span class="p">]</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;uri&#39;</span><span class="p">])</span>
+<span class="n">session_factory</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

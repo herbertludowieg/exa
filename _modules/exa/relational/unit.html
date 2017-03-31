@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa.relational.unit &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa.relational.unit</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa.relational.unit</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Unit Conversions</span>
+<span class="sd">#########################</span>
+<span class="sd">This module provides relational classes for unit conversion tables.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="k">import</span> <span class="n">and_</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Column</span>
+<span class="kn">from</span> <span class="nn">exa.relational.base</span> <span class="k">import</span> <span class="n">BaseMeta</span><span class="p">,</span> <span class="n">Base</span><span class="p">,</span> <span class="n">scoped_session</span>
+
+
+<div class="viewcode-block" id="Meta"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Meta">[docs]</a><span class="k">class</span> <span class="nc">Meta</span><span class="p">(</span><span class="n">BaseMeta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Special metaclass for unit objects supporting aliases. Aliases are</span>
+<span class="sd">    alternative names for standard symbols for units.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aliases</span> <span class="o">=</span> <span class="p">{}</span>     <span class="c1"># Note that all aliases should be lowercase (see below)</span>
+    <span class="k">def</span> <span class="nf">_getitem</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">aliases</span><span class="p">[</span><span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">aliases</span> <span class="k">else</span> <span class="n">key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">aliases</span><span class="p">[</span><span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="k">if</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">aliases</span> <span class="k">else</span> <span class="n">key</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">with</span> <span class="n">scoped_session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">and_</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">from_unit</span><span class="o">==</span><span class="n">f</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">to_unit</span><span class="o">==</span><span class="n">t</span><span class="p">))</span><span class="o">.</span><span class="n">one</span><span class="p">()</span><span class="o">.</span><span class="n">factor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;Usage requires syntax Dimension[&quot;from_unit&quot;, &quot;to_unit&quot;]&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Dimension"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Dimension">[docs]</a><span class="k">class</span> <span class="nc">Dimension</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Descriptive class for units.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        from_unit (str): Unit to convert from</span>
+<span class="sd">        to_unit (str): Unit to convert to</span>
+<span class="sd">        factor (float): Conversion factor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">from_unit</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">to_unit</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">factor</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Float</span><span class="p">,</span> <span class="n">nullable</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Length"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Length">[docs]</a><span class="k">class</span> <span class="nc">Length</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Length[&#39;angstrom&#39;, &#39;au&#39;]</span>
+<span class="sd">    1.88971616463</span>
+<span class="sd">    &gt;&gt;&gt; Length[&#39;A&#39;, &#39;au&#39;]</span>
+<span class="sd">    1.88971616463</span>
+<span class="sd">    &gt;&gt;&gt; Length[&#39;A&#39;, &#39;a0&#39;]</span>
+<span class="sd">    1.88971616463</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aliases</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;a.u.&#39;</span><span class="p">:</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;bohr&#39;</span><span class="p">:</span> <span class="s1">&#39;au&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;angstrom&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;angstroms&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\u212B</span><span class="s1">&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+        <span class="sa">u</span><span class="s1">&#39;</span><span class="se">\u212B</span><span class="s1">ngstrom&#39;</span><span class="p">:</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;a0&#39;</span><span class="p">:</span> <span class="s1">&#39;au&#39;</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Mass"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Mass">[docs]</a><span class="k">class</span> <span class="nc">Mass</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Mass[&#39;kg&#39;, &#39;lb&#39;]</span>
+<span class="sd">    2.2046226218</span>
+<span class="sd">    &gt;&gt;&gt; Mass[&#39;Da&#39;, &#39;kg&#39;]</span>
+<span class="sd">    1.660538921000011e-27</span>
+<span class="sd">    &gt;&gt;&gt; Mass[&#39;u&#39;, &#39;kg&#39;]</span>
+<span class="sd">    1.660538921000011e-27</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aliases</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;amu&#39;</span><span class="p">:</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Time"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Time">[docs]</a><span class="k">class</span> <span class="nc">Time</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Time[&#39;min&#39;, &#39;s&#39;]</span>
+<span class="sd">    60.0000000000024</span>
+<span class="sd">    &gt;&gt;&gt; Time[&#39;hr&#39;, &#39;s&#39;]</span>
+<span class="sd">    3599.999712000023</span>
+<span class="sd">    &gt;&gt;&gt; Time[&#39;weeks&#39;, &#39;days&#39;]</span>
+<span class="sd">    6.999999999955003</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Current"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Current">[docs]</a><span class="k">class</span> <span class="nc">Current</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Current[&#39;A&#39;, &#39;C_s&#39;]</span>
+<span class="sd">    1.0</span>
+<span class="sd">    &gt;&gt;&gt; Current[&#39;A&#39;, &#39;Bi&#39;]</span>
+<span class="sd">    0.1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Amount"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Amount">[docs]</a><span class="k">class</span> <span class="nc">Amount</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Amount[&#39;gmol&#39;, &#39;mol&#39;]</span>
+<span class="sd">    1.0</span>
+<span class="sd">    &gt;&gt;&gt; Amount[&#39;lbmol&#39;, &#39;mol&#39;]</span>
+<span class="sd">    453.5923744952991</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Luminosity"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Luminosity">[docs]</a><span class="k">class</span> <span class="nc">Luminosity</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Luminosity[&#39;cp&#39;, &#39;cd&#39;]</span>
+<span class="sd">    0.9810000000433602</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Dose"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Dose">[docs]</a><span class="k">class</span> <span class="nc">Dose</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Dose[&#39;Gy&#39;, &#39;rd&#39;]</span>
+<span class="sd">    100.0</span>
+<span class="sd">    &gt;&gt;&gt; Dose[&#39;J_kg&#39;, &#39;rd&#39;]</span>
+<span class="sd">    100.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Acceleration"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Acceleration">[docs]</a><span class="k">class</span> <span class="nc">Acceleration</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Acceleration[&#39;m_s2&#39;, &#39;cm_s2&#39;]</span>
+<span class="sd">    100.0</span>
+<span class="sd">    &gt;&gt;&gt; Acceleration[&#39;m_s2&#39;, &#39;stdgrav&#39;]</span>
+<span class="sd">    0.10197162130000001</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Charge"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Charge">[docs]</a><span class="k">class</span> <span class="nc">Charge</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Charge[&#39;e&#39;, &#39;C&#39;]</span>
+<span class="sd">    1.6021765649999947e-19</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Dipole"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Dipole">[docs]</a><span class="k">class</span> <span class="nc">Dipole</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Dipole[&#39;yCm&#39;, &#39;D&#39;]</span>
+<span class="sd">    299792.45817809016</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Energy"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Energy">[docs]</a><span class="k">class</span> <span class="nc">Energy</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Energy[&#39;J&#39;, &#39;cal&#39;]</span>
+<span class="sd">    0.2388458966</span>
+<span class="sd">    &gt;&gt;&gt; Energy[&#39;kcal&#39;, &#39;Btu&#39;]</span>
+<span class="sd">    3.9683205782473134</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">aliases</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;cm-1&#39;</span><span class="p">:</span> <span class="s1">&#39;cm^-1&#39;</span>
+    <span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="Force"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Force">[docs]</a><span class="k">class</span> <span class="nc">Force</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Force[&#39;N&#39;, &#39;lbf&#39;]</span>
+<span class="sd">    0.22480894310000002</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Frequency"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.Frequency">[docs]</a><span class="k">class</span> <span class="nc">Frequency</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; Frequency[&#39;1_s&#39;, &#39;Hz&#39;]</span>
+<span class="sd">    1.0</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="MolarMass"><a class="viewcode-back" href="../../../api/relational/other.html#exa.relational.unit.MolarMass">[docs]</a><span class="k">class</span> <span class="nc">MolarMass</span><span class="p">(</span><span class="n">Base</span><span class="p">,</span> <span class="n">Dimension</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">Meta</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    &gt;&gt;&gt; MolarMass[&#39;g_mol&#39;, &#39;kg_mol&#39;]</span>
+<span class="sd">    0.001</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

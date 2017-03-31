@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa._config &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa._config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa._config</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Configuration</span>
+<span class="sd">########################</span>
+<span class="sd">This module generates the &quot;~/.exa&quot; directory where all databases, logs, notebooks,</span>
+<span class="sd">and data reside. This configuration may be altered by editing the items below:</span>
+
+<span class="sd">paths:</span>
+<span class="sd">    - data: Path to the data directory (default ~/.exa/data)</span>
+<span class="sd">    - notebooks: Path to the notebooks directory (default ~/.exa/notebooks)</span>
+
+<span class="sd">log:</span>
+<span class="sd">    - nlogs: Number of log files to rotate</span>
+<span class="sd">    - nbytes: Max log file size (in bytes)</span>
+<span class="sd">    - syslog: System log file path</span>
+<span class="sd">    - dblog: Database log file path (if necessary)</span>
+<span class="sd">    - level: Logging level, 0: normal, 1: extra info, 2: debug</span>
+
+<span class="sd">db:</span>
+<span class="sd">    - uri: String URI for database connection</span>
+<span class="sd">    - update: If 1, refresh static database data (e.g. unit conversions)</span>
+
+<span class="sd">js:</span>
+<span class="sd">    - update: If 1, update JavaScript notebook extensions</span>
+
+<span class="sd">Warning:</span>
+<span class="sd">    The configuration file (~/.exa/config) should only be altered when no exa</span>
+<span class="sd">    notebooks are running (i.e. exa or any of its related packages are imported).</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">configparser</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">from</span> <span class="nn">exa.utility</span> <span class="k">import</span> <span class="n">mkp</span>
+
+
+<span class="nd">@atexit</span><span class="o">.</span><span class="n">register</span>
+<div class="viewcode-block" id="save"><a class="viewcode-back" href="../../api/configuration.html#exa._config.save">[docs]</a><span class="k">def</span> <span class="nf">save</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Save the configuration file to disk on exit, resetting update flags.</span>
+
+<span class="sd">    Warning:</span>
+<span class="sd">        This is a bit unsafe because we are not guarenteed to hit the updating</span>
+<span class="sd">        function during execution (that is what well written tests are for -</span>
+<span class="sd">        use **mock**), but it is advantageous in the case that multiple packages</span>
+<span class="sd">        that use exa are running simultaneously.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">del</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">]</span>    <span class="c1"># Delete dynamically assigned configuration options</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">f</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="set_update"><a class="viewcode-back" href="../../api/configuration.html#exa._config.set_update">[docs]</a><span class="k">def</span> <span class="nf">set_update</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set update flags.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;js&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span></div>
+
+
+<div class="viewcode-block" id="del_update"><a class="viewcode-back" href="../../api/configuration.html#exa._config.del_update">[docs]</a><span class="k">def</span> <span class="nf">del_update</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reset update flags.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;js&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span></div>
+
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">configparser</span><span class="o">.</span><span class="n">ConfigParser</span><span class="p">()</span>              <span class="c1"># Application configuration</span>
+<span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;windows&#39;</span><span class="p">:</span>        <span class="c1"># Get exa&#39;s root directory</span>
+    <span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;USERPROFILE&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">home</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;HOME&#39;</span><span class="p">)</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="s1">&#39;.exa&#39;</span><span class="p">,</span> <span class="n">mk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                 <span class="c1"># Make exa root directory</span>
+<span class="n">config_file</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">)</span>                 <span class="c1"># Config file path</span>
+<span class="n">pkg</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span>                   <span class="c1"># Package source path</span>
+<span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">mkp</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;config&#39;</span><span class="p">))</span>        <span class="c1"># Read in default config</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">config_file</span><span class="p">):</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">stats</span><span class="o">.</span><span class="n">st_size</span> <span class="o">&gt;</span> <span class="mi">180</span><span class="p">:</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span>                  <span class="c1"># Read in existing config</span>
+<span class="c1"># paths</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="n">mk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;notebooks&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;notebooks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;notebooks&#39;</span><span class="p">,</span> <span class="n">mk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">mkp</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;exa_demo.ipynb&#39;</span><span class="p">),</span>
+                    <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;notebooks&#39;</span><span class="p">,</span> <span class="s1">&#39;exa_demo.ipynb&#39;</span><span class="p">))</span>
+<span class="n">mkp</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;data&#39;</span><span class="p">],</span> <span class="s1">&#39;examples&#39;</span><span class="p">,</span> <span class="n">mk</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Ensure the example dir is made</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;paths&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfile</span><span class="p">(</span><span class="n">mkp</span><span class="p">(</span><span class="n">pkg</span><span class="p">,</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;exa_demo.ipynb&#39;</span><span class="p">),</span>
+                    <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;notebooks&#39;</span><span class="p">,</span> <span class="s1">&#39;exa_demo.ipynb&#39;</span><span class="p">))</span>
+    <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">del_update</span><span class="p">)</span>
+<span class="c1">#log</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;syslog&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;syslog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;sys.log&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;dblog&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;dblog&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;db.log&#39;</span><span class="p">)</span>
+<span class="c1"># db</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;None&#39;</span><span class="p">:</span>
+    <span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;uri&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;sqlite:///&#39;</span> <span class="o">+</span> <span class="n">mkp</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s1">&#39;exa.sqlite&#39;</span><span class="p">)</span> <span class="c1"># SQLite by default</span>
+<span class="c1"># dynamically allocated configurations (these are deleted before saving)</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;pkgdir&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pkg</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;exa_root&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">root</span>
+<span class="n">nb</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">numba</span>
+    <span class="n">nb</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="k">pass</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;numba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">nb</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;cuda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;numba&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;true&#39;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">numba</span> <span class="k">import</span> <span class="n">cuda</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">cuda</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">gpus</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;cuda&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">pass</span>
+<span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;notebook&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;false&#39;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">config</span>
+    <span class="k">if</span> <span class="s1">&#39;IPKernelApp&#39;</span> <span class="ow">in</span> <span class="n">cfg</span><span class="p">:</span>
+        <span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;notebook&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

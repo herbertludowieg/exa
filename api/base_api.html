@@ -1,0 +1,1388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Editor &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../index.html"/>
+        <link rel="up" title="API" href="api.html"/>
+        <link rel="next" title="Matplotlib Utilities" href="aux_api.html"/>
+        <link rel="prev" title="Configuration" href="configuration.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#logging">Logging</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#trait-supporting-data-objects">Trait Supporting Data Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#container">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#widget">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aux_api.html">Matplotlib Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aux_api.html#tex-utilities">TeX Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tester.html">Tester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Basic Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/base.html">Relational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/base.html#database-engine-configuration">Database Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html">Project Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html#job-table">Job Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html#file-tables">File Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html">Table of Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html#physical-constants">Physical Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html">Tests for <code class="docutils literal"><span class="pre">isotope</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html#tests-for-constant">Tests for <code class="docutils literal"><span class="pre">constant</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html#tests-for-unit">Tests for <code class="docutils literal"><span class="pre">unit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed/base.html">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed/workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/base.html">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/tests.html">Tests for Math Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector.html">Cartesian Vector Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector_tests.html">Tests for <code class="docutils literal"><span class="pre">cartesian</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc.html">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc.html#summations">Summations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc_tests.html">Tests for <code class="docutils literal"><span class="pre">summation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="filetypes/base.html">Filetypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filetypes/base.html#generic-csv-support">Generic CSV Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/container.html">Frontend Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/apps.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/external.html">Third Party Library Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/utility.html">Misc.</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>Editor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/base_api.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-exa.editor"></span><div class="section" id="editor">
+<h1>Editor<a class="headerlink" href="#editor" title="Permalink to this headline">¶</a></h1>
+<p>Text-editor-like functionality for programatically manipulating raw text input
+and output data and converting this data into container objects. This class
+does not behave like a fully fledged text editor but does have some basic find,
+replace, insert, etc. functionality.</p>
+<dl class="class">
+<dt id="exa.editor.Editor">
+<em class="property">class </em><code class="descclassname">exa.editor.</code><code class="descname">Editor</code><span class="sig-paren">(</span><em>path_stream_or_string</em>, <em>as_interned=False</em>, <em>nprint=30</em>, <em>name=None</em>, <em>description=None</em>, <em>meta=None</em>, <em>encoding=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor" title="Permalink to this definition">¶</a></dt>
+<dd><p>An editor is a representation of a text file on disk that can be
+programmatically manipulated.</p>
+<p>Text lines are stored in memory; no files remain open. This class does not
+strive to be a fully fledged text editor rather a base class for converting
+input and output data from text on disk to some type of (exa framework)
+container object (and vice versa).</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">template</span> <span class="o">=</span> <span class="s2">&quot;Hello World!</span><span class="se">\n</span><span class="s2">Hello </span><span class="si">{user}</span><span class="s2">&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span><span class="n">template</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">&#39;Hello World!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">editor</span><span class="p">)</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">del</span> <span class="n">editor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">len</span><span class="p">(</span><span class="n">editor</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">editor</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">fullpath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="s1">&#39;Alice&#39;</span><span class="p">)</span>
+<span class="go">Hello Alice</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Tip:</dt>
+<dd>Editor line numbers use a 0 base index. To increase the number of lines
+displayed by the repr, increase the value of the <strong>nprint</strong> attribute.</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">For large text with repeating strings be sure to use the <strong>as_interned</strong>
+argument.</p>
+</div>
+<dl class="attribute">
+<dt id="exa.editor.Editor.name">
+<code class="descname">name</code><a class="headerlink" href="#exa.editor.Editor.name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Data/file/misc name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.editor.Editor.description">
+<code class="descname">description</code><a class="headerlink" href="#exa.editor.Editor.description" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Data/file/misc description</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.editor.Editor.meta">
+<code class="descname">meta</code><a class="headerlink" href="#exa.editor.Editor.meta" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> &#8211; Additional metadata as key, value pairs</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.editor.Editor.nrpint">
+<code class="descname">nrpint</code><a class="headerlink" href="#exa.editor.Editor.nrpint" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> &#8211; Number of lines to display when printing</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.editor.Editor.cursor">
+<code class="descname">cursor</code><a class="headerlink" href="#exa.editor.Editor.cursor" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> &#8211; Line number position of the cusor (see <code class="xref py py-func docutils literal"><span class="pre">find_next_any()</span></code> and <code class="xref py py-func docutils literal"><span class="pre">find_next_string()</span></code>)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.write">
+<code class="descname">write</code><span class="sig-paren">(</span><em>path=None</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform formatting and write the formatted string to a file or stdout.</p>
+<p>Optional arguments can be used to format the editor&#8217;s contents. If no
+file path is given, prints to standard output.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Full file path (default None, prints to stdout)</li>
+<li><strong>*args</strong> &#8211; Positional arguments to format the editor with</li>
+<li><strong>**kwargs</strong> &#8211; Keyword arguments to format the editor with</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>*args</em>, <em>inplace=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format the string representation of the editor.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inplace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; If True, overwrite editor&#8217;s contents with formatted contents</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.head">
+<code class="descname">head</code><span class="sig-paren">(</span><em>n=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.head"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the top of the file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; Number of lines to display</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.tail">
+<code class="descname">tail</code><span class="sig-paren">(</span><em>n=10</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.tail"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the bottom of the file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>n</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; Number of lines to display</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.append">
+<code class="descname">append</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.append"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.append" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) &#8211; List of line strings to append to the end of the editor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.prepend">
+<code class="descname">prepend</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.prepend"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.prepend" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) &#8211; List of line strings to insert at the beginning of the editor</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.insert">
+<code class="descname">insert</code><span class="sig-paren">(</span><em>lines=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Insert lines into the editor.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To insert before the first line, use <code class="xref py py-func docutils literal"><span class="pre">preappend()</span></code>
+(or key 0); to insert after the last line use <a class="reference internal" href="#exa.editor.Editor.append" title="exa.editor.Editor.append"><code class="xref py py-func docutils literal"><span class="pre">append()</span></code></a>.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.6)"><em>dict</em></a>) &#8211; Dictionary of lines of form (lineno, string) pairs</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.remove_blank_lines">
+<code class="descname">remove_blank_lines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.remove_blank_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.remove_blank_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove all blank lines (blank lines are those with zero characters).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.delete_lines">
+<code class="descname">delete_lines</code><span class="sig-paren">(</span><em>lines</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.delete_lines"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.delete_lines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete all lines with given line numbers.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>lines</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) &#8211; List of integers corresponding to line numbers to delete</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.find">
+<code class="descname">find</code><span class="sig-paren">(</span><em>*strings</em>, <em>start=0</em>, <em>stop=None</em>, <em>keys_only=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.find"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.find" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the entire editor for lines that match the string.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;word one</span>
+<span class="s1">word two</span>
+<span class="s1">three&#39;&#39;&#39;</span>
+<span class="n">ed</span> <span class="o">=</span> <span class="n">Editor</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+<span class="n">ed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">)</span>          <span class="c1"># [(0, &quot;word one&quot;), (1, &quot;word two&quot;)]</span>
+<span class="n">ed</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;word&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">)</span> <span class="c1"># {&#39;word&#39;: [...], &#39;three&#39;: [(2, &quot;three&quot;)]}</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>*strings</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Any number of strings to search for</li>
+<li><strong>keys_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Only return keys</li>
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; Optional line to start searching on</li>
+<li><strong>stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; Optional line to stop searching on</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>results</em> &#8211; If multiple strings searched a dictionary of string key, (line number, line) values (else just values)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.find_next">
+<code class="descname">find_next</code><span class="sig-paren">(</span><em>string</em>, <em>start=None</em>, <em>keys_only=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.find_next"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.find_next" title="Permalink to this definition">¶</a></dt>
+<dd><p>From the editor&#8217;s current cursor position find the next instance of the
+given string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; String to search for from the current cursor position.</li>
+<li><strong>reverse</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Search in reverse (default false)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>tup (tuple)</em> &#8211; Tuple of cursor position and line or None if not found</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function cycles the entire editor (i.e. cursor to length of
+editor to zero and back to cursor position).</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.regex">
+<code class="descname">regex</code><span class="sig-paren">(</span><em>*patterns</em>, <em>start=0</em>, <em>stop=None</em>, <em>keys_only=False</em>, <em>flags=0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.regex"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.regex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search the editor for lines matching the regular expression.
+re.MULTILINE is not currently supported.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>*patterns</strong> &#8211; Regular expressions to search each line for</li>
+<li><strong>keys_only</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Only return keys</li>
+<li><strong>flags</strong> (<em>re.FLAG</em>) &#8211; flags passed to re.search</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>results (dict)</em> &#8211; Dictionary of pattern keys, line values (or groups - default)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.replace">
+<code class="descname">replace</code><span class="sig-paren">(</span><em>pattern</em>, <em>replacement</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.replace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.replace" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace all instances of a pattern with a replacement.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pattern</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Pattern to replace</li>
+<li><strong>replacement</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Text to insert</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.editor.Editor.pandas_dataframe">
+<code class="descname">pandas_dataframe</code><span class="sig-paren">(</span><em>start</em>, <em>stop</em>, <em>ncol</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.pandas_dataframe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.pandas_dataframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the result of tab-separated pandas.read_csv on
+a subset of the file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>start</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; line number where structured data starts</li>
+<li><strong>stop</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a>) &#8211; line number where structured data stops</li>
+<li><strong>ncol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.6)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.6)"><em>list</em></a>) &#8211; the number of columns in the structured
+data or a list of that length with column names</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>pd.DataFrame</em> &#8211; structured data</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.editor.Editor.variables">
+<code class="descname">variables</code><a class="headerlink" href="#exa.editor.Editor.variables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a list of templatable variables present in the file.</p>
+<p>Templating is accomplished by creating a bracketed object in the same
+way that Python performs <a class="reference external" href="https://docs.python.org/3.6/library/string.html">string formatting</a>. The editor is able to
+replace the placeholder value of the template. Integer templates are
+positional arguments.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="exa.editor.Editor.from_file">
+<em class="property">classmethod </em><code class="descname">from_file</code><span class="sig-paren">(</span><em>path</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an editor instance from a file on disk.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="exa.editor.Editor.from_stream">
+<em class="property">classmethod </em><code class="descname">from_stream</code><span class="sig-paren">(</span><em>f</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.from_stream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.from_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an editor instance from a file stream.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="exa.editor.Editor.from_string">
+<em class="property">classmethod </em><code class="descname">from_string</code><span class="sig-paren">(</span><em>string</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#Editor.from_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.Editor.from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an editor instance from a string template.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.editor.lines_from_file">
+<code class="descclassname">exa.editor.</code><code class="descname">lines_from_file</code><span class="sig-paren">(</span><em>path</em>, <em>as_interned=False</em>, <em>encoding=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#lines_from_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.lines_from_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of file lines from a given filepath.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; File path</li>
+<li><strong>as_interned</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; List of &#8220;interned&#8221; strings (default False)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>strings (list)</em> &#8211; File line list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.editor.lines_from_stream">
+<code class="descclassname">exa.editor.</code><code class="descname">lines_from_stream</code><span class="sig-paren">(</span><em>f</em>, <em>as_interned=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#lines_from_stream"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.lines_from_stream" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of file lines from a given file stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong></strong><strong>(</strong><strong></strong> (<em>f</em>) &#8211; class:<a href="#id1"><span class="problematic" id="id2">`</span></a>~io.TextIOWrapper): File stream</li>
+<li><strong>as_interned</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; List of &#8220;interned&#8221; strings (default False)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>strings (list)</em> &#8211; File line list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.editor.lines_from_string">
+<code class="descclassname">exa.editor.</code><code class="descname">lines_from_string</code><span class="sig-paren">(</span><em>string</em>, <em>as_interned=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/editor.html#lines_from_string"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.editor.lines_from_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a list of file lines from a given string.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; File string</li>
+<li><strong>as_interned</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; List of &#8220;interned&#8221; strings (default False)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>strings (list)</em> &#8211; File line list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.numerical"></span><div class="section" id="trait-supporting-data-objects">
+<h1>Trait Supporting Data Objects<a class="headerlink" href="#trait-supporting-data-objects" title="Permalink to this headline">¶</a></h1>
+<p>Data objects are used to store typed data coming from an external source (for
+example a file on disk). There are three primary data objects provided by
+this module, <a class="reference internal" href="#exa.numerical.Series" title="exa.numerical.Series"><code class="xref py py-class docutils literal"><span class="pre">Series</span></code></a>, <a class="reference internal" href="#exa.numerical.DataFrame" title="exa.numerical.DataFrame"><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code></a>,
+and <a class="reference internal" href="#exa.numerical.Field" title="exa.numerical.Field"><code class="xref py py-class docutils literal"><span class="pre">Field</span></code></a>. The purpose of these objects is to facilitate
+conversion of data into &#8220;traits&#8221; used in visualization and enforce relationships
+between data objects in a given container. Any of the objects provided by this
+module may be extended.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For information about traits and how they allow enable dynamic visualizations
+see <a class="reference internal" href="#module-exa.widget" title="exa.widget"><code class="xref py py-mod docutils literal"><span class="pre">widget</span></code></a>. For usage in container objects, see <a class="reference internal" href="#module-exa.container" title="exa.container"><code class="xref py py-mod docutils literal"><span class="pre">container</span></code></a>.</p>
+</div>
+<dl class="class">
+<dt id="exa.numerical.Numerical">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">Numerical</code><a class="reference internal" href="../_modules/exa/numerical.html#Numerical"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Numerical" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for <a class="reference internal" href="#exa.numerical.Series" title="exa.numerical.Series"><code class="xref py py-class docutils literal"><span class="pre">Series</span></code></a>, <a class="reference internal" href="#exa.numerical.DataFrame" title="exa.numerical.DataFrame"><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code></a>,
+and <a class="reference internal" href="#exa.numerical.Field" title="exa.numerical.Field"><code class="xref py py-class docutils literal"><span class="pre">Field</span></code></a> objects, providing default trait
+functionality and clean representations when present as part of containers.</p>
+<dl class="method">
+<dt id="exa.numerical.Numerical.slice_naive">
+<code class="descname">slice_naive</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Numerical.slice_naive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Numerical.slice_naive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice a data object based on its index, either by value (.ix) or
+position (.iloc).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; Single index value, slice, tuple, or list of indices/positionals</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>data</em> &#8211; Slice of self</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.BaseSeries">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">BaseSeries</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#BaseSeries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.BaseSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for dense and sparse series objects (labeled arrays).</p>
+<dl class="attribute">
+<dt id="exa.numerical.BaseSeries._sname">
+<code class="descname">_sname</code><a class="headerlink" href="#exa.numerical.BaseSeries._sname" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; May have a required name (default None)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">_iname (str</code></dt>
+<dd><p>May have a required index name</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseSeries._stype">
+<code class="descname">_stype</code><a class="headerlink" href="#exa.numerical.BaseSeries._stype" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>type</em> &#8211; May have a required value type</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseSeries._itype">
+<code class="descname">_itype</code><a class="headerlink" href="#exa.numerical.BaseSeries._itype" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>type</em> &#8211; May have a required index type</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseSeries._precision">
+<code class="descname">_precision</code><a class="headerlink" href="#exa.numerical.BaseSeries._precision" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> &#8211; Precision for traits (JSON values)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseSeries._index_trait">
+<code class="descname">_index_trait</code><a class="headerlink" href="#exa.numerical.BaseSeries._index_trait" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>bool</em> &#8211; Index as trait (default false)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.BaseDataFrame">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">BaseDataFrame</code><a class="reference internal" href="../_modules/exa/numerical.html#BaseDataFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.BaseDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for dense and sparse dataframe objects (labeled matrices).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the _cardinal attribute is populated, it will automatically be added
+to the _categories and _columns attributes.</p>
+</div>
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._cardinal">
+<code class="descname">_cardinal</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._cardinal" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> &#8211; Tuple of column name and raw type that acts as foreign key to index of another table</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._index">
+<code class="descname">_index</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._index" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> &#8211; Name of index (may be used as foreign key in another table)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._columns">
+<code class="descname">_columns</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._columns" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; Required columns</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._categories">
+<code class="descname">_categories</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._categories" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> &#8211; Dict of column names, raw types that if present will be converted to and from categoricals automatically</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._traits">
+<code class="descname">_traits</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._traits" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> &#8211; List of columns that may (if present) be converted to traits on call to _update_traits</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="exa.numerical.BaseDataFrame._precision">
+<code class="descname">_precision</code><a class="headerlink" href="#exa.numerical.BaseDataFrame._precision" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> &#8211; Dict of column names, ints, that if present will have traits of the specified (float) precision</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.BaseDataFrame.cardinal_groupby">
+<code class="descname">cardinal_groupby</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#BaseDataFrame.cardinal_groupby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.BaseDataFrame.cardinal_groupby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Group this object on it cardinal dimension (_cardinal).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><em>grpby</em> &#8211; Pandas groupby object (grouped on _cardinal)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.BaseDataFrame.slice_cardinal">
+<code class="descname">slice_cardinal</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#BaseDataFrame.slice_cardinal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.BaseDataFrame.slice_cardinal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the slice of this object by the value or values of the cardinal
+dimension.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.Series">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">Series</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Series"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Series" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trait supporting analogue of <a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/generated/pandas.Series.html#pandas.Series" title="(in pandas v0.19.0+709.ga108651.dirty)"><code class="xref py py-class docutils literal"><span class="pre">Series</span></code></a>.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySeries</span><span class="p">(</span><span class="n">exa</span><span class="o">.</span><span class="n">numerical</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+    <span class="n">_sname</span> <span class="o">=</span> <span class="s1">&#39;data&#39;</span>        <span class="c1"># series default name</span>
+    <span class="n">_iname</span> <span class="o">=</span> <span class="s1">&#39;data_index&#39;</span>  <span class="c1"># series default index name</span>
+    <span class="n">_precision</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c1"># series precision for generating traits (of values)</span>
+
+<span class="n">seri</span> <span class="o">=</span> <span class="n">MySeries</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">traits</span> <span class="o">=</span> <span class="n">seri</span><span class="o">.</span><span class="n">_update_traits</span><span class="p">()</span>   <span class="c1"># dict of traits generated from seri&#39;s values</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="exa.numerical.Series.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Series.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Series.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of this object.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For arguments and description of behavior see <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.copy.html">pandas docs</a>.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.DataFrame">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">DataFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#DataFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.DataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trait supporting analogue of <a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.19.0+709.ga108651.dirty)"><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code></a>.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyDF</span><span class="p">(</span><span class="n">exa</span><span class="o">.</span><span class="n">numerical</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+    <span class="n">_cardinal</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;cardinal&#39;</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+    <span class="n">_index</span> <span class="o">=</span> <span class="s1">&#39;mydf_index&#39;</span>
+    <span class="n">_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">]</span>
+    <span class="n">_traits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">]</span>
+    <span class="n">_categories</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;symbol&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">}</span>
+    <span class="n">_precision</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="exa.numerical.DataFrame.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#DataFrame.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.DataFrame.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of this object.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For arguments and description of behavior see <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.copy.html">pandas docs</a>.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.Field">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">Field</code><span class="sig-paren">(</span><em>*args</em>, <em>field_values=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field" title="Permalink to this definition">¶</a></dt>
+<dd><p>A field is defined by field data and field values. Field data defines the
+discretization of the field (i.e. its origin in a given space, number of
+steps/step spaceing, and endpoint for example). Field values can be scalar
+(series) and/or vector (dataframe) data defining the magnitude and/or direction
+at each given point.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The convention for generating the discrete field data and ordering of
+the field values must be the same (e.g. discrete field points are
+generated x, y, then z and scalar field values are a series object
+ordered looping first over x then y, then z).</p>
+</div>
+<p>In addition to the <a class="reference internal" href="#exa.numerical.DataFrame" title="exa.numerical.DataFrame"><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code></a> attributes, this object
+has the following:</p>
+<dl class="attribute">
+<dt id="exa.numerical.Field._values_precision">
+<code class="descname">_values_precision</code><a class="headerlink" href="#exa.numerical.Field._values_precision" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> &#8211; Precision in values passed as traits</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.Field.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of this object.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Copies both field data and field values.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For arguments and description of behavior see <a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.Series.copy.html">pandas docs</a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.Field.memory_usage">
+<code class="descname">memory_usage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field.memory_usage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field.memory_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the combined memory usage of the field data and field values.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.Field.slice_naive">
+<code class="descname">slice_naive</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field.slice_naive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field.slice_naive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Naively (on index) slice the field data and values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; Int, slice, or iterable to select data and values</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>field</em> &#8211; Sliced field object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.numerical.Field.slice_cardinal">
+<code class="descname">slice_cardinal</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field.slice_cardinal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field.slice_cardinal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.Field3D">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">Field3D</code><span class="sig-paren">(</span><em>*args</em>, <em>field_values=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#Field3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.Field3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dataframe for storing dimensions of a scalar or vector field of 3D space.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="14%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>nx</td>
+<td>int</td>
+<td>number of grid points in x</td>
+</tr>
+<tr class="row-odd"><td>ny</td>
+<td>int</td>
+<td>number of grid points in y</td>
+</tr>
+<tr class="row-even"><td>nz</td>
+<td>int</td>
+<td>number of grid points in z</td>
+</tr>
+<tr class="row-odd"><td>ox</td>
+<td>float</td>
+<td>field origin point in x</td>
+</tr>
+<tr class="row-even"><td>oy</td>
+<td>float</td>
+<td>field origin point in y</td>
+</tr>
+<tr class="row-odd"><td>oz</td>
+<td>float</td>
+<td>field origin point in z</td>
+</tr>
+<tr class="row-even"><td>xi</td>
+<td>float</td>
+<td>First component in x</td>
+</tr>
+<tr class="row-odd"><td>xj</td>
+<td>float</td>
+<td>Second component in x</td>
+</tr>
+<tr class="row-even"><td>xk</td>
+<td>float</td>
+<td>Third component in x</td>
+</tr>
+<tr class="row-odd"><td>yi</td>
+<td>float</td>
+<td>First component in y</td>
+</tr>
+<tr class="row-even"><td>yj</td>
+<td>float</td>
+<td>Second component in y</td>
+</tr>
+<tr class="row-odd"><td>yk</td>
+<td>float</td>
+<td>Third component in y</td>
+</tr>
+<tr class="row-even"><td>zi</td>
+<td>float</td>
+<td>First component in z</td>
+</tr>
+<tr class="row-odd"><td>zj</td>
+<td>float</td>
+<td>Second component in z</td>
+</tr>
+<tr class="row-even"><td>zk</td>
+<td>float</td>
+<td>Third component in z</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Each field should be flattened into an N x 1 (scalar) or N x 3 (vector)
+series or dataframe respectively. The orientation of the flattening
+should have x as the outer loop and z values as the inner loop (for both
+cases). This is sometimes called C-major or C-style order, and has
+the last index changing the fastest and the first index changing the
+slowest.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#exa.numerical.Field" title="exa.numerical.Field"><code class="xref py py-class docutils literal"><span class="pre">Field</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.SparseSeries">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">SparseSeries</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#SparseSeries"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.SparseSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sparse implementation of <a class="reference internal" href="#exa.numerical.Series" title="exa.numerical.Series"><code class="xref py py-class docutils literal"><span class="pre">Series</span></code></a>.</p>
+<dl class="method">
+<dt id="exa.numerical.SparseSeries.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#SparseSeries.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.SparseSeries.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of this object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.numerical.SparseDataFrame">
+<em class="property">class </em><code class="descclassname">exa.numerical.</code><code class="descname">SparseDataFrame</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#SparseDataFrame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.SparseDataFrame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trait supporting sparse dataframe.</p>
+<dl class="method">
+<dt id="exa.numerical.SparseDataFrame.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#SparseDataFrame.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.SparseDataFrame.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make a copy of this object.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.numerical.check_key">
+<code class="descclassname">exa.numerical.</code><code class="descname">check_key</code><span class="sig-paren">(</span><em>data_object</em>, <em>key</em>, <em>cardinal=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/numerical.html#check_key"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.numerical.check_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the value of an index key by matching values or getting positionals.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.container"></span><div class="section" id="container">
+<h1>Container<a class="headerlink" href="#container" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="xref py py-class docutils literal"><span class="pre">BaseContainer</span></code> class is the primary object for
+data processing, analysis, and visualization. In brief, containers are composed
+of data objects whose contents are used for 2D and 3D visualization. Containers
+also provide some content management and data relationship features.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For a description of data objects see <a class="reference internal" href="#module-exa.numerical" title="exa.numerical"><code class="xref py py-mod docutils literal"><span class="pre">numerical</span></code></a>. For a
+description of visualization of containers, see <a class="reference internal" href="#module-exa.widget" title="exa.widget"><code class="xref py py-mod docutils literal"><span class="pre">widget</span></code></a>.</p>
+</div>
+<dl class="class">
+<dt id="exa.container.Container">
+<em class="property">class </em><code class="descclassname">exa.container.</code><code class="descname">Container</code><span class="sig-paren">(</span><em>name=None</em>, <em>description=None</em>, <em>meta=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Container class responsible for all features related to data management.</p>
+<dl class="method">
+<dt id="exa.container.Container.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><em>name=None</em>, <em>description=None</em>, <em>meta=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a copy of the current object (may alter the container&#8217;s name,
+description, and update the metadata if needed).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.concat">
+<code class="descname">concat</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.concat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.concat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate any number of container objects with the current object into
+a single container object.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For argument description, see <code class="xref py py-func docutils literal"><span class="pre">concat()</span></code>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.slice_naive">
+<code class="descname">slice_naive</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.slice_naive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.slice_naive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Naively slice each data object in the container by the object&#8217;s index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> &#8211; Int, slice, or list by which to extra &#8220;sub&#8221;-container</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>sub</em> &#8211; Sub container of the same format with a view of the data</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>To ensure that a new container is created, use the copy method.</p>
+<div class="last highlight-Python"><div class="highlight"><pre><span></span><span class="n">mycontainer</span><span class="p">[</span><span class="nb">slice</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.slice_cardinal">
+<code class="descname">slice_cardinal</code><span class="sig-paren">(</span><em>key</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.slice_cardinal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.slice_cardinal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Slice the container according to its (primary) cardinal axis.</p>
+<p>The &#8220;cardinal&#8221; axis can have any name so long as the name matches a
+data object attached to the container. The index name for this object
+should also match the value of the cardinal axis.</p>
+<p>The algorithm builds a network graph representing the data relationships
+(including information about the type of relationship) and then traverses
+the edge tree (starting from the cardinal table). Each subsequent child
+object in the tree is sliced based on its relationship with its parent.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Breadth first traversal is performed.</p>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>This function does not make a copy (if possible): to ensure a new
+object is created (a copy) use <a class="reference internal" href="#exa.container.Container.copy" title="exa.container.Container.copy"><code class="xref py py-func docutils literal"><span class="pre">copy()</span></code></a>
+after slicing.</p>
+<div class="last highlight-Python"><div class="highlight"><pre><span></span><span class="n">myslice</span> <span class="o">=</span> <span class="n">mycontainer</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For data network generation, see <a class="reference internal" href="#exa.container.Container.network" title="exa.container.Container.network"><code class="xref py py-func docutils literal"><span class="pre">network()</span></code></a>.
+For information about relationships between data objects see
+<a class="reference internal" href="#module-exa.numerical" title="exa.numerical"><code class="xref py py-mod docutils literal"><span class="pre">numerical</span></code></a>.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.cardinal_groupby">
+<code class="descname">cardinal_groupby</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.cardinal_groupby"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.cardinal_groupby" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an instance of this class for every step in the cardinal dimension.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.info">
+<code class="descname">info</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display information about the container&#8217;s data objects (note that info
+on metadata and visualization objects is also provided).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Sizes are reported in bytes.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.memory_usage">
+<code class="descname">memory_usage</code><span class="sig-paren">(</span><em>string=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.memory_usage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.memory_usage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the memory usage estimate of the container.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Human readable string (default false)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#exa.container.Container.info" title="exa.container.Container.info"><code class="xref py py-func docutils literal"><span class="pre">info()</span></code></a></p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.network">
+<code class="descname">network</code><span class="sig-paren">(</span><em>figsize=(14</em>, <em>9)</em>, <em>fig=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.network"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display information about the container&#8217;s object relationships.</p>
+<p>Nodes correspond to data objects. The size of the node corresponds
+to the size of the table in memory. The color of the node corresponds
+to its fundamental data type. Nodes are labeled by their container
+name; class information is listed below. The color of the connections
+correspond to the type of relationship; either an index of one table
+corresponds to a column in another table or the two tables share an
+index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>figsize</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.6)"><em>tuple</em></a>) &#8211; Tuple containing figure dimensions</li>
+<li><strong>fig</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Generate the figure (default true)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><em>graph</em> &#8211; Network graph object containing data relationships</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.container.Container.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the container as an HDF5 archive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Path where to save the container</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="exa.container.Container.load">
+<em class="property">classmethod </em><code class="descname">load</code><span class="sig-paren">(</span><em>pkid_or_path=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#Container.load"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.Container.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a container object from a persistent location or file path.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>pkid_or_path</strong> &#8211; Integer pkid corresponding to the container table or file path</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><em>container</em> &#8211; The saved container object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.container.TypedMeta">
+<em class="property">class </em><code class="descclassname">exa.container.</code><code class="descname">TypedMeta</code><a class="reference internal" href="../_modules/exa/container.html#TypedMeta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.TypedMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>This metaclass creates statically typed class attributes using the property
+framework.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestMeta</span><span class="p">(</span><span class="n">TypedMeta</span><span class="p">):</span>
+    <span class="n">attr1</span> <span class="o">=</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="n">attr2</span> <span class="o">=</span> <span class="n">DataFrame</span>
+
+<span class="k">class</span> <span class="nc">TestClass</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">TestMeta</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">attr1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">attr2</span>
+</pre></div>
+</div>
+<p>The above code dynamically creates code that looks like the following:</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TestClass</span><span class="p">:</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">attr1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr1</span>
+
+    <span class="nd">@attr1.setter</span>
+    <span class="k">def</span> <span class="nf">attr1</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;attr1 must be int&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attr1</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="nd">@attr1.deleter</span>
+    <span class="k">def</span> <span class="nf">attr1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr1</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">attr2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr2</span>
+
+    <span class="nd">@attr2.setter</span>
+    <span class="k">def</span> <span class="nf">attr2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;attr2 must be DataFrame&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_attr2</span> <span class="o">=</span> <span class="n">obj</span>
+
+    <span class="nd">@attr2.deleter</span>
+    <span class="k">def</span> <span class="nf">attr2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attr2</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr1</span><span class="p">,</span> <span class="n">attr2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr1</span> <span class="o">=</span> <span class="n">attr1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attr2</span> <span class="o">=</span> <span class="n">attr2</span>
+</pre></div>
+</div>
+<dl class="staticmethod">
+<dt id="exa.container.TypedMeta.create_property">
+<em class="property">static </em><code class="descname">create_property</code><span class="sig-paren">(</span><em>name</em>, <em>ptype</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/container.html#TypedMeta.create_property"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.container.TypedMeta.create_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a custom property with a getter that performs computing
+functionality (if available) and raise a type error if setting
+with the wrong type.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">By default, the setter attempts to convert the object to the
+correct type; a type error is raised if this fails.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.widget"></span><div class="section" id="widget">
+<h1>Widget<a class="headerlink" href="#widget" title="Permalink to this headline">¶</a></h1>
+<p>Functionality for using Jupyter notebook extensions to visualize data speficic
+containers. This module requires the infrastructure provided by the <a class="reference external" href="https://traitlets.readthedocs.io/en/stable/">traitlets</a>
+and <a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/">ipywidgets</a> packages.</p>
+<dl class="class">
+<dt id="exa.widget.Widget">
+<em class="property">class </em><code class="descclassname">exa.widget.</code><code class="descname">Widget</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/widget.html#Widget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.widget.Widget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base widget class for Jupyter notebook widgets provided by exa. Standardizes
+bidirectional communication handling between notebook extensions&#8217; frontend
+JavaScript and backend Python.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.widget.ContainerWidget">
+<em class="property">class </em><code class="descclassname">exa.widget.</code><code class="descname">ContainerWidget</code><span class="sig-paren">(</span><em>container</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/widget.html#ContainerWidget"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.widget.ContainerWidget" title="Permalink to this definition">¶</a></dt>
+<dd><p>Jupyter notebook widget representation of an exa Container. The widget
+accepts a (reference to a) container and parameters and creates a suitable
+display. By default a container displays an interactive graphic containing
+information provided by <code class="xref py py-func docutils literal"><span class="pre">info()</span></code> and
+<code class="xref py py-func docutils literal"><span class="pre">network()</span></code>.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference internal" href="#module-exa.container" title="exa.container"><code class="xref py py-mod docutils literal"><span class="pre">container</span></code></a>, <code class="xref py py-mod docutils literal"><span class="pre">container</span></code></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.widget.install_notebook_widgets">
+<code class="descclassname">exa.widget.</code><code class="descname">install_notebook_widgets</code><span class="sig-paren">(</span><em>pkg_nbext</em>, <em>sys_nbext</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/widget.html#install_notebook_widgets"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.widget.install_notebook_widgets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convenience wrapper around <code class="xref py py-func docutils literal"><span class="pre">install_nbextension()</span></code> that
+organizes notebook extensions for exa and related packages in a systematic
+fashion.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>pkg_nbext</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Path to the &#8220;_nbextension&#8221; directory in the source</li>
+<li><strong>sys_nbext</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.6)"><em>str</em></a>) &#8211; Path to the system &#8220;nbextensions&#8221; directory</li>
+<li><strong>verbose</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.6)"><em>bool</em></a>) &#8211; Verbose installation</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="aux_api.html" class="btn btn-neutral float-right" title="Matplotlib Utilities" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

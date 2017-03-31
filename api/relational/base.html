@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Relational &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../index.html"/>
+        <link rel="up" title="API" href="../api.html"/>
+        <link rel="next" title="Project Table" href="cms.html"/>
+        <link rel="prev" title="Basic Tests" href="../tests.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration.html#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#trait-supporting-data-objects">Trait Supporting Data Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#container">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base_api.html#widget">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html">Matplotlib Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../aux_api.html#tex-utilities">TeX Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../misc.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tester.html">Tester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tests.html">Basic Tests</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Relational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database-engine-configuration">Database Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html">Project Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html#job-table">Job Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cms.html#file-tables">File Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html">Table of Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html#physical-constants">Physical Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="other.html#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Tests for <code class="docutils literal"><span class="pre">isotope</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#tests-for-constant">Tests for <code class="docutils literal"><span class="pre">constant</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html#tests-for-unit">Tests for <code class="docutils literal"><span class="pre">unit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/base.html">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributed/workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/base.html">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/tests.html">Tests for Math Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector.html">Cartesian Vector Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/vector_tests.html">Tests for <code class="docutils literal"><span class="pre">cartesian</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc.html#summations">Summations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../math/misc_tests.html">Tests for <code class="docutils literal"><span class="pre">summation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html">Filetypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../filetypes/base.html#generic-csv-support">Generic CSV Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/container.html">Frontend Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/apps.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/external.html">Third Party Library Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../js/utility.html">Misc.</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../api.html">API</a> &raquo;</li>
+        
+      <li>Relational</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/api/relational/base.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-exa.relational.__init__"></span><div class="section" id="relational">
+<h1>Relational<a class="headerlink" href="#relational" title="Permalink to this headline">¶</a></h1>
+<p>This (sub)package is provides the content management framework for container
+objects and a collection of static data for reference and unit conversions.</p>
+<dl class="function">
+<dt id="exa.relational.__init__.load_isotope_data">
+<code class="descclassname">exa.relational.__init__.</code><code class="descname">load_isotope_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/__init__.html#load_isotope_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.__init__.load_isotope_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load isotope data into the database (replacing existing).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.__init__.load_unit_data">
+<code class="descclassname">exa.relational.__init__.</code><code class="descname">load_unit_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/__init__.html#load_unit_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.__init__.load_unit_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load unit conversions into the database (replacing existing).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This function actually computes (prior to bulk inserting data)
+conversion factors.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.__init__.load_constant_data">
+<code class="descclassname">exa.relational.__init__.</code><code class="descname">load_constant_data</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/__init__.html#load_constant_data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.__init__.load_constant_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load constants into the database (replacing existing).</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.relational.base"></span><div class="section" id="database-engine-configuration">
+<h1>Database Engine Configuration<a class="headerlink" href="#database-engine-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This module provides the base classes and metaclasses for relational tables
+created by exa. It also provides the database engine configuration and session
+class factory.</p>
+<dl class="function">
+<dt id="exa.relational.base.generate_hexuid">
+<code class="descclassname">exa.relational.base.</code><code class="descname">generate_hexuid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#generate_hexuid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.generate_hexuid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a unique, random, hex string id.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.base.cleanup_engine">
+<code class="descclassname">exa.relational.base.</code><code class="descname">cleanup_engine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#cleanup_engine"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.cleanup_engine" title="Permalink to this definition">¶</a></dt>
+<dd><p>At exit, cleanup connection pool.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.relational.base.scoped_session">
+<code class="descclassname">exa.relational.base.</code><code class="descname">scoped_session</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#scoped_session"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.scoped_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Safely commit relational objects.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.base.BaseMeta">
+<em class="property">class </em><code class="descclassname">exa.relational.base.</code><code class="descname">BaseMeta</code><span class="sig-paren">(</span><em>classname</em>, <em>bases</em>, <em>dict_</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the base metaclass for all relational tables. It provides convient
+lookup methods, bulk insert methods, and conversions to other formats.</p>
+<dl class="method">
+<dt id="exa.relational.base.BaseMeta.get_by_pkid">
+<code class="descname">get_by_pkid</code><span class="sig-paren">(</span><em>pkid</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta.get_by_pkid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta.get_by_pkid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select an object by pkid.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.base.BaseMeta.get_by_name">
+<code class="descname">get_by_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta.get_by_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta.get_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select objects by name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.base.BaseMeta.get_by_uid">
+<code class="descname">get_by_uid</code><span class="sig-paren">(</span><em>uid</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta.get_by_uid"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta.get_by_uid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select an object by hexuid (as string)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.base.BaseMeta.bulk_insert">
+<code class="descname">bulk_insert</code><span class="sig-paren">(</span><em>mappings</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta.bulk_insert"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta.bulk_insert" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform a <a class="reference external" href="http://docs.sqlalchemy.org/en/latest/orm/session_api.html">bulk insert</a> into a specific table.</p>
+<div class="highlight-Python"><div class="highlight"><pre><span></span><span class="n">mappings</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;column1&#39;</span><span class="p">:</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;column2&#39;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;column3&#39;</span><span class="p">:</span> <span class="s1">&#39;bar&#39;</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;column1&#39;</span><span class="p">:</span> <span class="s1">&#39;fop&#39;</span><span class="p">,</span> <span class="s1">&#39;column2&#39;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="s1">&#39;column3&#39;</span><span class="p">:</span> <span class="s1">&#39;baz&#39;</span><span class="p">}]</span>
+<span class="n">Table</span><span class="o">.</span><span class="n">bulk_insert</span><span class="p">(</span><span class="n">mappings</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="exa.relational.base.BaseMeta.to_frame">
+<code class="descname">to_frame</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/exa/relational/base.html#BaseMeta.to_frame"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.BaseMeta.to_frame" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dump the table to a <a class="reference external" href="https://pandas-docs.github.io/pandas-docs-travis/generated/pandas.DataFrame.html#pandas.DataFrame" title="(in pandas v0.19.0+709.ga108651.dirty)"><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code></a> object.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If performing this action on a very large table, may raise a
+memory error. It is almost always more effective to query the
+table for the specific records of interest.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.base.Name">
+<em class="property">class </em><code class="descclassname">exa.relational.base.</code><code class="descname">Name</code><a class="reference internal" href="../../_modules/exa/relational/base.html#Name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.Name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Name and description fields.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.base.HexUID">
+<em class="property">class </em><code class="descclassname">exa.relational.base.</code><code class="descname">HexUID</code><a class="reference internal" href="../../_modules/exa/relational/base.html#HexUID"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.HexUID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hex-based unique id (uid) field.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.base.Time">
+<em class="property">class </em><code class="descclassname">exa.relational.base.</code><code class="descname">Time</code><a class="reference internal" href="../../_modules/exa/relational/base.html#Time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.Time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timestamp fields.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="exa.relational.base.Size">
+<em class="property">class </em><code class="descclassname">exa.relational.base.</code><code class="descname">Size</code><a class="reference internal" href="../../_modules/exa/relational/base.html#Size"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.relational.base.Size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Approximate size (on disk) and file count fields.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cms.html" class="btn btn-neutral float-right" title="Project Table" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tests.html" class="btn btn-neutral" title="Basic Tests" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

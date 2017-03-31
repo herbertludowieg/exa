@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="index.html"/>
+        <link rel="next" title="API" href="api/api.html"/>
+        <link rel="prev" title="Exa" href="overview.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html#executables">Executables</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#anaconda">Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pypi">Pypi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cuda">CUDA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#repository">Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-next">What&#8217;s Next?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Python&#8217;s external libraries are maintained as packages in repositories.
+There are two main repositories, <a class="reference external" href="https://pypi.python.org/pypi">pypi</a> and <a class="reference external" href="https://anaconda.org/anaconda/packages">anaconda</a> and two corresponding
+Python applications that interact with them (pip and conda respectively).</p>
+<p>This project recommends using conda because it is both a package manager and
+a Python virtual environment manager. Anaconda also provides better cross
+platform support especially for Python packages that require compiled external
+dependences.</p>
+<div class="section" id="anaconda">
+<h2>Anaconda<a class="headerlink" href="#anaconda" title="Permalink to this headline">¶</a></h2>
+<p>Using anaconda or miniconda...</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install numba exa
+</pre></div>
+</div>
+</div>
+<div class="section" id="pypi">
+<h2>Pypi<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
+<p>Using pip...</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># sudo apt-get install llvm-3.7 or sudo yum install ... etc.</span>
+sudo pip install numba exa
+</pre></div>
+</div>
+</div>
+<div class="section" id="cuda">
+<h2>CUDA<a class="headerlink" href="#cuda" title="Permalink to this headline">¶</a></h2>
+<p>If working on a system with CUDA supported Nvidia GPUs...</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>conda install cudatoolkit     <span class="c1"># or via apt-get or yum etc.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="repository">
+<h2>Repository<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h2>
+<p>Manually...</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># install llvm, numba, cudatoolkit, and CPython3.x</span>
+git clone https://github.com/exa-analytics/exa
+<span class="nb">cd</span> exa
+pip install .
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-s-next">
+<h2>What&#8217;s Next?<a class="headerlink" href="#what-s-next" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Users should check out the <a class="reference internal" href="user/overview.html#exa-user-overview"><span class="std std-ref">User Introduction</span></a></li>
+<li>Contributors should check out the <a class="reference internal" href="dev/overview.html#exa-dev-overview"><span class="std std-ref">Developer Introduction</span></a></li>
+<li>The <a class="reference internal" href="api/api.html#exa-api"><span class="std std-ref">API</span></a> contains usage and extension examples, and developer notes</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api/api.html" class="btn btn-neutral float-right" title="API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="overview.html" class="btn btn-neutral" title="Exa" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

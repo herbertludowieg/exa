@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa.test.tester &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa.test.tester</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa.test.tester</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Tester</span>
+<span class="sd">#########################</span>
+<span class="sd">Custom tester class for running interactive (i.e. within the Jupyter notebook</span>
+<span class="sd">environment) tests.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">doctest</span> <span class="k">import</span> <span class="n">DocTestFinder</span><span class="p">,</span> <span class="n">DocTestRunner</span>
+<span class="kn">from</span> <span class="nn">unittest</span> <span class="k">import</span> <span class="n">TestCase</span><span class="p">,</span> <span class="n">TestLoader</span><span class="p">,</span> <span class="n">TextTestRunner</span>
+<span class="kn">from</span> <span class="nn">exa.log</span> <span class="k">import</span> <span class="n">loggers</span>
+<span class="kn">from</span> <span class="nn">exa._config</span> <span class="k">import</span> <span class="n">config</span>
+<span class="kn">from</span> <span class="nn">exa.utility</span> <span class="k">import</span> <span class="n">datetime_header</span><span class="p">,</span> <span class="n">get_internal_modules</span>
+
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">loggers</span><span class="p">[</span><span class="s1">&#39;syslog&#39;</span><span class="p">]</span>    <span class="c1"># Tests are written to the system log</span>
+<span class="n">verbosity</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">])</span>
+<span class="n">verbose</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">verbosity</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+
+
+<div class="viewcode-block" id="UnitTester"><a class="viewcode-back" href="../../../api/tester.html#exa.test.tester.UnitTester">[docs]</a><span class="k">class</span> <span class="nc">UnitTester</span><span class="p">(</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The custom tester class which provides an alternative test runner.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nd">@classmethod</span>
+<div class="viewcode-block" id="UnitTester.run_interactively"><a class="viewcode-back" href="../../../api/tester.html#exa.test.tester.UnitTester.run_interactively">[docs]</a>    <span class="k">def</span> <span class="nf">run_interactively</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run a test suite in a Jupyter notebook environment or shell.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            log (bool): Write output to a log file instead of to stdout</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">suite</span> <span class="o">=</span> <span class="n">TestLoader</span><span class="p">()</span><span class="o">.</span><span class="n">loadTestsFromTestCase</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">TextTestRunner</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stream</span><span class="p">,</span>
+                                    <span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">suite</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">TextTestRunner</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="n">verbosity</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">suite</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div></div>
+
+
+<div class="viewcode-block" id="run_doctests"><a class="viewcode-back" href="../../../api/tester.html#exa.test.tester.run_doctests">[docs]</a><span class="k">def</span> <span class="nf">run_doctests</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Run all docstring tests.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        log (bool): Write test results to system log (default false)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">tester</span><span class="p">(</span><span class="n">modules</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Runs tests for each module.&quot;&quot;&quot;</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">module</span> <span class="ow">in</span> <span class="n">modules</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="n">DocTestFinder</span><span class="p">()</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+            <span class="n">tests</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">test</span><span class="p">:</span> <span class="n">test</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">test</span><span class="o">.</span><span class="n">examples</span> <span class="o">==</span> <span class="p">[]:</span>    <span class="c1"># Skip empty tests</span>
+                    <span class="k">pass</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">f</span><span class="p">:</span>
+                        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)))</span>
+                        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">((</span><span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">,</span> <span class="n">test</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">80</span><span class="p">)))</span>
+                        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">runner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">results</span>
+
+    <span class="n">runner</span> <span class="o">=</span> <span class="n">DocTestRunner</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">)</span>
+    <span class="n">modules</span> <span class="o">=</span> <span class="n">get_internal_modules</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;LOGGING DOCTEST&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tester</span><span class="p">(</span><span class="n">modules</span><span class="p">,</span> <span class="n">runner</span><span class="p">,</span> <span class="n">f</span><span class="o">=</span><span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">stream</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tester</span><span class="p">(</span><span class="n">modules</span><span class="p">,</span> <span class="n">runner</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="run_unittests"><a class="viewcode-back" href="../../../api/tester.html#exa.test.tester.run_unittests">[docs]</a><span class="k">def</span> <span class="nf">run_unittests</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform (interactive) unit testing logging the results.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        log (bool): Send results to system log (default False)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tests</span> <span class="o">=</span> <span class="n">UnitTester</span><span class="o">.</span><span class="n">__subclasses__</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">log</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;LOGGING UNITTEST&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">test</span><span class="o">.</span><span class="n">run_interactively</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="n">log</span><span class="p">)</span> <span class="k">for</span> <span class="n">test</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

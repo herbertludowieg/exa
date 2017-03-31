@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa.relational.__init__ &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa.relational.__init__</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa.relational.__init__</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Relational</span>
+<span class="sd">####################</span>
+<span class="sd">This (sub)package is provides the content management framework for container</span>
+<span class="sd">objects and a collection of static data for reference and unit conversions.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">atexit</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
+<span class="kn">from</span> <span class="nn">exa._config</span> <span class="k">import</span> <span class="n">config</span><span class="p">,</span> <span class="n">del_update</span>
+<span class="kn">from</span> <span class="nn">exa.utility</span> <span class="k">import</span> <span class="n">mkp</span>
+<span class="kn">from</span> <span class="nn">exa.relational.base</span> <span class="k">import</span> <span class="n">engine</span><span class="p">,</span> <span class="n">Base</span><span class="p">,</span> <span class="n">scoped_session</span><span class="p">,</span> <span class="n">session_factory</span>
+<span class="kn">from</span> <span class="nn">exa.relational.unit</span> <span class="k">import</span> <span class="p">(</span><span class="n">Length</span><span class="p">,</span> <span class="n">Mass</span><span class="p">,</span> <span class="n">Time</span><span class="p">,</span> <span class="n">Current</span><span class="p">,</span> <span class="n">Amount</span><span class="p">,</span> <span class="n">Luminosity</span><span class="p">,</span>
+                                 <span class="n">Dose</span><span class="p">,</span> <span class="n">Acceleration</span><span class="p">,</span> <span class="n">Charge</span><span class="p">,</span> <span class="n">Dipole</span><span class="p">,</span> <span class="n">Energy</span><span class="p">,</span> <span class="n">Force</span><span class="p">,</span>
+                                 <span class="n">Frequency</span><span class="p">,</span> <span class="n">MolarMass</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">exa.relational.isotope</span> <span class="k">import</span> <span class="n">Isotope</span>
+<span class="kn">from</span> <span class="nn">exa.relational.constant</span> <span class="k">import</span> <span class="n">Constant</span>
+<span class="kn">from</span> <span class="nn">exa.relational.project</span> <span class="k">import</span> <span class="n">Project</span>
+<span class="kn">from</span> <span class="nn">exa.relational.job</span> <span class="k">import</span> <span class="n">Job</span>
+<span class="kn">from</span> <span class="nn">exa.relational.file</span> <span class="k">import</span> <span class="n">DataFile</span><span class="p">,</span> <span class="n">ContainerFile</span>
+<span class="kn">from</span> <span class="nn">exa.relational</span> <span class="k">import</span> <span class="n">test</span>
+
+
+<span class="c1"># Static data loaders and table configuration (see below) are performed here</span>
+<span class="c1"># because we import all of the table schemas here.</span>
+<div class="viewcode-block" id="load_isotope_data"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.__init__.load_isotope_data">[docs]</a><span class="k">def</span> <span class="nf">load_isotope_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Load isotope data into the database (replacing existing).&quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;pkgdir&#39;</span><span class="p">],</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;isotopes.json&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;values&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span> <span class="s1">&#39;af&#39;</span><span class="p">,</span> <span class="s1">&#39;eaf&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;radius&#39;</span><span class="p">,</span> <span class="s1">&#39;gfactor&#39;</span><span class="p">,</span> <span class="s1">&#39;mass&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;emass&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;eneg&#39;</span><span class="p">,</span> <span class="s1">&#39;quadmom&#39;</span><span class="p">,</span> <span class="s1">&#39;spin&#39;</span><span class="p">,</span> <span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;szuid&#39;</span><span class="p">,</span>
+                  <span class="s1">&#39;strid&#39;</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pkid&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;isotope&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_unit_data"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.__init__.load_unit_data">[docs]</a><span class="k">def</span> <span class="nf">load_unit_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load unit conversions into the database (replacing existing).</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        This function actually computes (prior to bulk inserting data)</span>
+<span class="sd">        conversion factors.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;pkgdir&#39;</span><span class="p">],</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;units.json&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">series</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">values</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">series</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="n">factor</span> <span class="o">=</span> <span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">from_unit</span><span class="p">,</span> <span class="n">to_unit</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">product</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">labels</span><span class="p">))</span>
+        <span class="n">df_to_save</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">({</span><span class="s1">&#39;from_unit&#39;</span><span class="p">:</span> <span class="n">from_unit</span><span class="p">,</span>
+                                             <span class="s1">&#39;to_unit&#39;</span><span class="p">:</span> <span class="n">to_unit</span><span class="p">,</span>
+                                             <span class="s1">&#39;factor&#39;</span><span class="p">:</span> <span class="n">factor</span><span class="p">})</span>
+        <span class="n">df_to_save</span><span class="p">[</span><span class="s1">&#39;pkid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_to_save</span><span class="o">.</span><span class="n">index</span>
+        <span class="n">df_to_save</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">column</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="load_constant_data"><a class="viewcode-back" href="../../../api/relational/base.html#exa.relational.__init__.load_constant_data">[docs]</a><span class="k">def</span> <span class="nf">load_constant_data</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Load constants into the database (replacing existing).&quot;&quot;&quot;</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="n">mkp</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;dynamic&#39;</span><span class="p">][</span><span class="s1">&#39;pkgdir&#39;</span><span class="p">],</span> <span class="s1">&#39;_static&#39;</span><span class="p">,</span> <span class="s1">&#39;constants.json&#39;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;pkid&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">to_sql</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;constant&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">if_exists</span><span class="o">=</span><span class="s1">&#39;replace&#39;</span><span class="p">)</span></div>
+
+
+<span class="c1"># Create tables if necessary and load static data (also if necessary)</span>
+<span class="c1"># Note that relationship tables (e.g. projectjob in exa.relational.project)</span>
+<span class="c1"># will be created automatically (without explicit import here).</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;db&#39;</span><span class="p">][</span><span class="s1">&#39;update&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+    <span class="n">load_isotope_data</span><span class="p">()</span>
+    <span class="n">load_unit_data</span><span class="p">()</span>
+    <span class="n">load_constant_data</span><span class="p">()</span>
+    <span class="n">atexit</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">del_update</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

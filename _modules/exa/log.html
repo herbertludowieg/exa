@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>exa.log &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/api.html">API</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+        
+      <li>exa.log</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for exa.log</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Copyright (c) 2015-2016, Exa Analytics Development Team</span>
+<span class="c1"># Distributed under the terms of the Apache License 2.0</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Logging</span>
+<span class="sd">############</span>
+<span class="sd">There are two log files that exa writes to, the system log and the database log.</span>
+<span class="sd">The database log is used when the database backend does not provide its own</span>
+<span class="sd">logging solution.</span>
+
+<span class="sd">Levels:</span>
+<span class="sd">    - 0: default (&gt;= WARNING messages are logged)</span>
+<span class="sd">    - 1: info    (&gt;= INFO messages are logged)</span>
+<span class="sd">    - 2: debug   (all messages are logged)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">from</span> <span class="nn">logging.handlers</span> <span class="k">import</span> <span class="n">RotatingFileHandler</span>
+<span class="kn">from</span> <span class="nn">textwrap</span> <span class="k">import</span> <span class="n">wrap</span>
+<span class="kn">from</span> <span class="nn">exa._config</span> <span class="k">import</span> <span class="n">config</span>
+
+
+<div class="viewcode-block" id="LogFormat"><a class="viewcode-back" href="../../api/configuration.html#exa.log.LogFormat">[docs]</a><span class="k">class</span> <span class="nc">LogFormat</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Custom log format used by all loggers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">spacing</span> <span class="o">=</span> <span class="s1">&#39;                                     &#39;</span>
+    <span class="n">log_basic</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%(asctime)19s</span><span class="s1"> - </span><span class="si">%(levelname)8s</span><span class="s1">&#39;</span>
+    <span class="n">debug_format</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(asctime)19s</span><span class="s2"> - </span><span class="si">%(levelname)8s</span><span class="s2"> - </span><span class="si">%(pathname)s</span><span class="s2">:</span><span class="si">%(lineno)d</span><span class="s2"></span>
+<span class="s2">                                     </span><span class="si">%(message)s</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">info_format</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span><span class="si">%(asctime)19s</span><span class="s2"> - </span><span class="si">%(levelname)8s</span><span class="s2"> - </span><span class="si">%(message)s</span><span class="s2">&quot;&quot;&quot;</span>
+    <span class="n">log_formats</span> <span class="o">=</span> <span class="p">{</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">:</span> <span class="n">debug_format</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">:</span> <span class="n">info_format</span><span class="p">,</span>
+                   <span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">:</span> <span class="n">info_format</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span> <span class="n">debug_format</span><span class="p">,</span>
+                   <span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">:</span> <span class="n">debug_format</span><span class="p">}</span>
+
+<div class="viewcode-block" id="LogFormat.format"><a class="viewcode-back" href="../../api/configuration.html#exa.log.LogFormat.format">[docs]</a>    <span class="k">def</span> <span class="nf">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">record</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overwrites the built-in format function (called when sending a message</span>
+<span class="sd">        to the logger) with the specific format defined by this class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">fmt</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_formats</span><span class="p">[</span><span class="n">record</span><span class="o">.</span><span class="n">levelno</span><span class="p">])</span>
+        <span class="n">j</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">spacing</span>
+        <span class="n">record</span><span class="o">.</span><span class="n">msg</span> <span class="o">=</span> <span class="n">j</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">wrap</span><span class="p">(</span><span class="n">record</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">80</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">record</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="create_logger"><a class="viewcode-back" href="../../api/configuration.html#exa.log.create_logger">[docs]</a><span class="k">def</span> <span class="nf">create_logger</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Create a logger with a given name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">handler</span> <span class="o">=</span> <span class="n">RotatingFileHandler</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="n">name</span><span class="p">],</span>
+                                  <span class="n">maxBytes</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;nbytes&#39;</span><span class="p">]),</span>
+                                  <span class="n">backupCount</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;nlogs&#39;</span><span class="p">]))</span>
+    <span class="n">handler</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">LogFormat</span><span class="p">())</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>  <span class="c1"># Default level (logging message less severe than this are ignored)</span>
+    <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">][</span><span class="s1">&#39;level&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">NOTSET</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">logger</span></div>
+
+
+<span class="n">loggers</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">create_logger</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;log&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)}</span>
+
+<span class="c1">#def setup_loggers():</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Setup up loggers and (corresponding) file handlers.</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    global config</span>
+<span class="c1">#    if &#39;loggers&#39; in config:</span>
+<span class="c1">#        cleanup()</span>
+<span class="c1">#    config[&#39;loggers&#39;] = {}</span>
+<span class="c1">#    log_files = dict((key, value) for key, value in config.items() if key.startswith(&#39;log_&#39;))</span>
+<span class="c1">#    for key, path in log_files.items():</span>
+<span class="c1">#        logger = logging.getLogger(&#39;sqlalchemy&#39;) if &#39;db&#39; in key else logging.getLogger(key)</span>
+<span class="c1">#        handler = RotatingFileHandler(path, maxBytes=config[&#39;logfile_max_bytes&#39;],</span>
+<span class="c1">#                                      backupCount=config[&#39;logfile_max_count&#39;])</span>
+<span class="c1">#        handler.setFormatter(LogFormat())</span>
+<span class="c1">#        logger.addHandler(handler)</span>
+<span class="c1">#        if config[&#39;runlevel&#39;] == 0:</span>
+<span class="c1">#            logger.setLevel(logging.WARNING)</span>
+<span class="c1">#        elif config[&#39;runlevel&#39;] == 1:</span>
+<span class="c1">#            logger.setLevel(logging.INFO)</span>
+<span class="c1">#        else:</span>
+<span class="c1">#            logger.setLevel(logging.DEBUG)</span>
+<span class="c1">#        config[&#39;loggers&#39;][key.replace(&#39;log_&#39;, &#39;&#39;)] = logger</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def logfiles():</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Lists available log names.</span>
+<span class="c1">#</span>
+<span class="c1">#    Returns:</span>
+<span class="c1">#        names (list): List of available log names</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    return [handler.name for handler in logging.root.handlers]</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def get_logger(which=&#39;sys&#39;):</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Get a log file handler (&#39;sys&#39;, &#39;db&#39;, &#39;user&#39;).</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    return config[&#39;loggers&#39;][which]</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def head(log=&#39;log_sys&#39;, n=10):</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Print the oldest log messages.</span>
+<span class="c1">#</span>
+<span class="c1">#    Args:</span>
+<span class="c1">#        log (str): Log name</span>
+<span class="c1">#        n (int): Number of lines to print</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    print_log(log, n, True)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def tail(log=&#39;sys&#39;, n=10):</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Print the most recent log messages.</span>
+<span class="c1">#</span>
+<span class="c1">#    Args:</span>
+<span class="c1">#        log (str): Log name</span>
+<span class="c1">#        n (int): Number of lines to print</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    print_log(log, n, False)</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def print_log(log, n, head=True):</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Print the head or tail of a given log file (see :func:`~exa.log.head`</span>
+<span class="c1">#    and :func:`~exa.log.tail`).</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    lines = None</span>
+<span class="c1">#    with open(config[&#39;log_&#39; + log], &#39;r&#39;) as f:</span>
+<span class="c1">#        lines = f.read().splitlines()</span>
+<span class="c1">#    if head:</span>
+<span class="c1">#        print(&#39;\n&#39;.join(lines[:n]))</span>
+<span class="c1">#    else:</span>
+<span class="c1">#        print(&#39;\n&#39;.join(lines[-n:]))</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#def cleanup():</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    Clean up logging file handlers.</span>
+<span class="c1">#    &quot;&quot;&quot;</span>
+<span class="c1">#    for name, logger in config[&#39;loggers&#39;].items():</span>
+<span class="c1">#        for handler in logger.handlers:</span>
+<span class="c1">#            handler.close()</span>
+<span class="c1">#        logger.handlers = []</span>
+<span class="c1">#    del config[&#39;loggers&#39;]</span>
+<span class="c1">#</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

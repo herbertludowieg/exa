@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; exa 0.3.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="exa 0.3.0 documentation" href="../index.html"/>
+        <link rel="up" title="API" href="api.html"/>
+        <link rel="next" title="Editor" href="base_api.html"/>
+        <link rel="prev" title="API" href="api.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> exa
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.3
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Info</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">Exa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview.html#executables">Executables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="api.html">API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_api.html">Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_api.html#trait-supporting-data-objects">Trait Supporting Data Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_api.html#container">Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base_api.html#widget">Widget</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aux_api.html">Matplotlib Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="aux_api.html#tex-utilities">TeX Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="misc.html">Utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tester.html">Tester</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests.html">Basic Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/base.html">Relational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/base.html#database-engine-configuration">Database Engine Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html">Project Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html#job-table">Job Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/cms.html#file-tables">File Tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html">Table of Isotopes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html#physical-constants">Physical Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/other.html#unit-conversions">Unit Conversions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html">Tests for <code class="docutils literal"><span class="pre">isotope</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html#tests-for-constant">Tests for <code class="docutils literal"><span class="pre">constant</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="relational/tests.html#tests-for-unit">Tests for <code class="docutils literal"><span class="pre">unit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed/base.html">Distributed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributed/workflow.html">Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/base.html">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/tests.html">Tests for Math Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector.html">Cartesian Vector Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/vector_tests.html">Tests for <code class="docutils literal"><span class="pre">cartesian</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc.html">Repeat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc.html#summations">Summations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/misc_tests.html">Tests for <code class="docutils literal"><span class="pre">summation</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="filetypes/base.html">Filetypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filetypes/base.html#generic-csv-support">Generic CSV Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/container.html">Frontend Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/apps.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/external.html">Third Party Library Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="js/utility.html">Misc.</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/overview.html">User Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Contributor Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dev/overview.html">Developer Introduction</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">exa</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="api.html">API</a> &raquo;</li>
+        
+      <li>Configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/api/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <span class="target" id="module-exa._config"></span><div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>This module generates the &#8220;~/.exa&#8221; directory where all databases, logs, notebooks,
+and data reside. This configuration may be altered by editing the items below:</p>
+<dl class="docutils">
+<dt>paths:</dt>
+<dd><ul class="first last simple">
+<li>data: Path to the data directory (default ~/.exa/data)</li>
+<li>notebooks: Path to the notebooks directory (default ~/.exa/notebooks)</li>
+</ul>
+</dd>
+<dt>log:</dt>
+<dd><ul class="first last simple">
+<li>nlogs: Number of log files to rotate</li>
+<li>nbytes: Max log file size (in bytes)</li>
+<li>syslog: System log file path</li>
+<li>dblog: Database log file path (if necessary)</li>
+<li>level: Logging level, 0: normal, 1: extra info, 2: debug</li>
+</ul>
+</dd>
+<dt>db:</dt>
+<dd><ul class="first last simple">
+<li>uri: String URI for database connection</li>
+<li>update: If 1, refresh static database data (e.g. unit conversions)</li>
+</ul>
+</dd>
+<dt>js:</dt>
+<dd><ul class="first last simple">
+<li>update: If 1, update JavaScript notebook extensions</li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The configuration file (~/.exa/config) should only be altered when no exa
+notebooks are running (i.e. exa or any of its related packages are imported).</p>
+</div>
+<dl class="function">
+<dt id="exa._config.save">
+<code class="descclassname">exa._config.</code><code class="descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/_config.html#save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa._config.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the configuration file to disk on exit, resetting update flags.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This is a bit unsafe because we are not guarenteed to hit the updating
+function during execution (that is what well written tests are for -
+use <strong>mock</strong>), but it is advantageous in the case that multiple packages
+that use exa are running simultaneously.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa._config.set_update">
+<code class="descclassname">exa._config.</code><code class="descname">set_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/_config.html#set_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa._config.set_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set update flags.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="exa._config.del_update">
+<code class="descclassname">exa._config.</code><code class="descname">del_update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/_config.html#del_update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa._config.del_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset update flags.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.error"></span><div class="section" id="exceptions">
+<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h1>
+<p>All base level exceptions are defined here.</p>
+<dl class="exception">
+<dt id="exa.error.ExaException">
+<em class="property">exception </em><code class="descclassname">exa.error.</code><code class="descname">ExaException</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/error.html#ExaException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.error.ExaException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception with support for logging.</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="exa.error.RequiredColumnError">
+<em class="property">exception </em><code class="descclassname">exa.error.</code><code class="descname">RequiredColumnError</code><span class="sig-paren">(</span><em>missing</em>, <em>clsname</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/error.html#RequiredColumnError"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.error.RequiredColumnError" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal"><span class="pre">DataFrame</span></code> column error.</p>
+</dd></dl>
+
+</div>
+<span class="target" id="module-exa.log"></span><div class="section" id="logging">
+<h1>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h1>
+<p>There are two log files that exa writes to, the system log and the database log.
+The database log is used when the database backend does not provide its own
+logging solution.</p>
+<dl class="docutils">
+<dt>Levels:</dt>
+<dd><ul class="first last simple">
+<li>0: default (&gt;= WARNING messages are logged)</li>
+<li>1: info    (&gt;= INFO messages are logged)</li>
+<li>2: debug   (all messages are logged)</li>
+</ul>
+</dd>
+</dl>
+<dl class="class">
+<dt id="exa.log.LogFormat">
+<em class="property">class </em><code class="descclassname">exa.log.</code><code class="descname">LogFormat</code><span class="sig-paren">(</span><em>fmt=None</em>, <em>datefmt=None</em>, <em>style='%'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/log.html#LogFormat"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.log.LogFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Custom log format used by all loggers.</p>
+<dl class="method">
+<dt id="exa.log.LogFormat.format">
+<code class="descname">format</code><span class="sig-paren">(</span><em>record</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/log.html#LogFormat.format"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.log.LogFormat.format" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrites the built-in format function (called when sending a message
+to the logger) with the specific format defined by this class.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="exa.log.create_logger">
+<code class="descclassname">exa.log.</code><code class="descname">create_logger</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/exa/log.html#create_logger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#exa.log.create_logger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a logger with a given name.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="base_api.html" class="btn btn-neutral float-right" title="Editor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral" title="API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Tom Duignan, Alex Marchenko.
+      Last updated on Mar 31, 2017.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'0.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
