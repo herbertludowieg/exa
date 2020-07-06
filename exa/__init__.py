@@ -18,6 +18,9 @@ _log['handlers']['file']['filename'] = os.path.join(tempfile.gettempdir(),
                                                     'exa.log')
 logging.config.dictConfig(_log)
 
+import exa
+exa.logging.disable()
+
 from .core import (DataFrame, Series, Field3D, Field, Editor, Container,
                    TypedMeta, SparseDataFrame)
 
